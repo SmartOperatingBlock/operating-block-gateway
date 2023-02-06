@@ -434,7 +434,7 @@
         "type": "function",
         "z": "09012e75c72a4968",
         "name": "processSerialData",
-        "func": "let parts = JSON.parse(msg.serialData);\n\nmsg.room_id = parts[\"rooom_id\"]\n\nreturn msg;",
+        "func": "let parts = JSON.parse(msg.serialData);\n\nmsg.room_id = parts[\"room_id\"]\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -453,7 +453,7 @@
         "type": "function",
         "z": "09012e75c72a4968",
         "name": "processSerialData",
-        "func": "var parts = msg.serialData.split(\"-\");\n\n//dato il protocollo creo delle variabili globali per gestire il messaggio\nmsg.actuatorID = parts[1].trim()\nmsg.actuatorType = parts[2].trim()\nmsg.roomID = parts[3].trim()\n\nreturn msg;",
+        "func": "let parts = JSON.parse(msg.serialData);\n\nmsg.actuator_id = parts[\"actuator_id\"]\nmsg.actuator_type = parts[\"actuator_type\"]\nmsg.room_id = parts[\"room_id\"]\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -727,7 +727,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 4,
-        "x": 1910,
+        "x": 1950,
         "y": 1300,
         "wires": [
             [
@@ -757,7 +757,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 2100,
+        "x": 2220,
         "y": 1240,
         "wires": []
     },
@@ -773,7 +773,7 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 2100,
+        "x": 2220,
         "y": 1360,
         "wires": []
     },
@@ -789,7 +789,7 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 2100,
+        "x": 2220,
         "y": 1320,
         "wires": []
     },
@@ -805,7 +805,7 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 2100,
+        "x": 2220,
         "y": 1280,
         "wires": []
     },
@@ -1324,7 +1324,7 @@
         "type": "function",
         "z": "09012e75c72a4968",
         "name": "processSerialData",
-        "func": "var parts = msg.serialData.split(\"-\");\n\n//dato il protocollo creo delle variabili globali per gestire il messaggio\nmsg.actuatorID = parts[1].trim()\nmsg.actuatorType = parts[2].trim()\nmsg.roomID = parts[3].trim()\n\nreturn msg;",
+        "func": "let parts = JSON.parse(msg.serialData);\n\nmsg.room_id = parts[\"room_id\"]\n\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
