@@ -1,0 +1,1036 @@
+[
+    {
+        "id": "09012e75c72a4968",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "7f550ba4b652afbb",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "eb54885cfae1efc1",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "32174867b86c7b03",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "UpdateRoomState",
+        "func": "let jsonData = JSON.parse(msg.payload);\n\nmsg.payload = [\n    {\n        \"op\": \"add\",\n        \"path\": jsonData[\"temperature\"][\"path\"],\n        \"value\": parseInt(msg.temperature_value)\n    }\n]\n\nmsg.url = \"https://room.api.wcus.digitaltwins.azure.net/digitaltwins/\"+ msg.room_id +\"?api-version=2020-10-31\"\nmsg.method = \"patch\"\n\nreturn msg; \n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1370,
+        "y": 480,
+        "wires": [
+            [
+                "c45a10208faeea88"
+            ]
+        ]
+    },
+    {
+        "id": "17a8a64fa23751ed",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "processSerialData",
+        "func": "//var parts = msg.serialData.split(\"-\");\nlet parts = JSON.parse(msg.serialData); \n\n//dato il protocollo creo delle variabili globali per gestire il messaggio\n//msg.roomID = parts[1].trim()\n//msg.valueChanged = parts[2].trim()\n//msg.value = parts[3].trim()\n\nmsg.room_id = parts[\"room_id\"]\nmsg.temperature_value = parts[\"temperature_value\"]\nmsg.temperature_unit = parts[\"temperature_unit\"]\n\n\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 930,
+        "y": 480,
+        "wires": [
+            [
+                "af11a3caafbb5fa8"
+            ]
+        ]
+    },
+    {
+        "id": "c4db83d867cd1492",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "UpdateActuatorState",
+        "func": "let jsonData = JSON.parse(msg.payload);\n\nmsg.payload = [\n    {\n        \"op\": \"add\",\n        \"path\": jsonData[global.get(\"valueChanged\")][\"path\"],\n        \"value\": global.get(\"value\")\n    }\n]\n\n\nmsg.url = \"https://room.api.wcus.digitaltwins.azure.net/digitaltwins/\" + global.get(\"roomID\") + \"?api-version=2020-10-31\"\nmsg.method = \"patch\"\n\nreturn msg; \n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1380,
+        "y": 540,
+        "wires": [
+            [
+                "c45a10208faeea88"
+            ]
+        ]
+    },
+    {
+        "id": "38965161414b027a",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "HealthProfessionalEnterExit",
+        "func": "let jsonData = JSON.parse(msg.payload);\n\nmsg.payload = [\n    {\n        \"op\": \"add\",\n        \"path\": jsonData[global.get(\"valueChanged\")][\"path\"],\n        \"value\": global.get(\"value\")\n    }\n]\n\n\nmsg.url = \"https://room.api.wcus.digitaltwins.azure.net/digitaltwins/\" + global.get(\"roomID\") + \"?api-version=2020-10-31\"\nmsg.method = \"patch\"\n\nreturn msg; \n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1400,
+        "y": 600,
+        "wires": [
+            [
+                "c45a10208faeea88"
+            ]
+        ]
+    },
+    {
+        "id": "9695e6816e740aaf",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "PatientEnterExit",
+        "func": "let jsonData = JSON.parse(msg.payload);\n\nmsg.payload = [\n    {\n        \"op\": \"add\",\n        \"path\": jsonData[global.get(\"valueChanged\")][\"path\"],\n        \"value\": global.get(\"value\")\n    }\n]\n\n\nmsg.url = \"https://room.api.wcus.digitaltwins.azure.net/digitaltwins/\" + global.get(\"roomID\") + \"?api-version=2020-10-31\"\nmsg.method = \"patch\"\n\nreturn msg; \n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1360,
+        "y": 660,
+        "wires": [
+            [
+                "c45a10208faeea88"
+            ]
+        ]
+    },
+    {
+        "id": "dcc8abdf633f1c30",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "MedicalDeviceTracking",
+        "func": "let jsonData = JSON.parse(msg.payload);\n\nmsg.payload = [\n    {\n        \"op\": \"add\",\n        \"path\": jsonData[global.get(\"valueChanged\")][\"path\"],\n        \"value\": global.get(\"value\")\n    }\n]\n\n\nmsg.url = \"https://room.api.wcus.digitaltwins.azure.net/digitaltwins/\" + global.get(\"roomID\") + \"?api-version=2020-10-31\"\nmsg.method = \"patch\"\n\nreturn msg; \n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1390,
+        "y": 720,
+        "wires": [
+            [
+                "c45a10208faeea88"
+            ]
+        ]
+    },
+    {
+        "id": "d1be411bbad65001",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "PatientOnOperatingTable",
+        "func": "let jsonData = JSON.parse(msg.payload);\n\nmsg.payload = [\n    {\n        \"op\": \"add\",\n        \"path\": jsonData[global.get(\"valueChanged\")][\"path\"],\n        \"value\": global.get(\"value\")\n    }\n]\n\n\nmsg.url = \"https://room.api.wcus.digitaltwins.azure.net/digitaltwins/\" + global.get(\"roomID\") + \"?api-version=2020-10-31\"\nmsg.method = \"patch\"\n\nreturn msg; \n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1390,
+        "y": 780,
+        "wires": [
+            [
+                "c45a10208faeea88"
+            ]
+        ]
+    },
+    {
+        "id": "f749ed1e2e58c229",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "AvailableActuator",
+        "func": "let jsonData = parseJson(msg.payload);\n\njsonData[msg.actuatorID] = {\n    \"type\": msg.actuatorType,\n    \"room\": msg.roomID\n}\n\n//msg.payload = jsonData\nfunction parseJson(string){\n    return string === \"\" ? JSON.parse(\"{}\") : JSON.parse(string)\n}\n\nmsg.payload = jsonData\nreturn msg; \n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1370,
+        "y": 840,
+        "wires": [
+            [
+                "5c6d578149de144a"
+            ]
+        ]
+    },
+    {
+        "id": "dc71330618798ae2",
+        "type": "file in",
+        "z": "09012e75c72a4968",
+        "name": "read file",
+        "filename": "/home/giacomo/nodeRed/type1.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "utf8",
+        "allProps": false,
+        "x": 1160,
+        "y": 540,
+        "wires": [
+            [
+                "c4db83d867cd1492"
+            ]
+        ]
+    },
+    {
+        "id": "976a5466bc4b4345",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "processSerialData",
+        "func": "var parts = msg.serialData.split(\"-\");\n\n//dato il protocollo creo delle variabili globali per gestire il messaggio\nmsg.actuatorID = parts[1].trim()\nmsg.value = parts[2].trim()\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 930,
+        "y": 540,
+        "wires": [
+            [
+                "dc71330618798ae2"
+            ]
+        ]
+    },
+    {
+        "id": "aae77acf1eb6c588",
+        "type": "file in",
+        "z": "09012e75c72a4968",
+        "name": "read file",
+        "filename": "/home/giacomo/nodeRed/type2.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "utf8",
+        "allProps": false,
+        "x": 1160,
+        "y": 600,
+        "wires": [
+            [
+                "38965161414b027a"
+            ]
+        ]
+    },
+    {
+        "id": "5224a2d0c5f5e2ff",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "processSerialData",
+        "func": "var parts = msg.serialData.split(\"-\");\n\n//dato il protocollo creo delle variabili globali per gestire il messaggio\nmsg.healtProfessionalID = parts[1].trim()\nmsg.roomID = parts[2].trim()\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 930,
+        "y": 600,
+        "wires": [
+            [
+                "aae77acf1eb6c588"
+            ]
+        ]
+    },
+    {
+        "id": "af11a3caafbb5fa8",
+        "type": "file in",
+        "z": "09012e75c72a4968",
+        "name": "read file",
+        "filename": "/home/giacomo/nodeRed/type0.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "utf8",
+        "allProps": false,
+        "x": 1160,
+        "y": 480,
+        "wires": [
+            [
+                "32174867b86c7b03"
+            ]
+        ]
+    },
+    {
+        "id": "9d6fa57b1db1e8b3",
+        "type": "switch",
+        "z": "09012e75c72a4968",
+        "name": "TypeSwitch",
+        "property": "type",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "5",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "6",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 7,
+        "x": 650,
+        "y": 660,
+        "wires": [
+            [
+                "17a8a64fa23751ed"
+            ],
+            [
+                "976a5466bc4b4345"
+            ],
+            [
+                "5224a2d0c5f5e2ff"
+            ],
+            [
+                "88d63c4793cbd755"
+            ],
+            [
+                "269af3b43e760d2b"
+            ],
+            [
+                "637a5d6856e31424"
+            ],
+            [
+                "37741262158114fd"
+            ]
+        ]
+    },
+    {
+        "id": "88d63c4793cbd755",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "processSerialData",
+        "func": "var parts = msg.serialData.split(\"-\");\n\n//dato il protocollo creo delle variabili globali per gestire il messaggio\nmsg.patientID = parts[1].trim()\nmsg.roomID = parts[2].trim()\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 930,
+        "y": 660,
+        "wires": [
+            [
+                "3cb60112ba87b410"
+            ]
+        ]
+    },
+    {
+        "id": "9bedcce7720f9f78",
+        "type": "file in",
+        "z": "09012e75c72a4968",
+        "name": "read file",
+        "filename": "/home/giacomo/nodeRed/type4.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "utf8",
+        "allProps": false,
+        "x": 1160,
+        "y": 720,
+        "wires": [
+            [
+                "dcc8abdf633f1c30"
+            ]
+        ]
+    },
+    {
+        "id": "269af3b43e760d2b",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "processSerialData",
+        "func": "var parts = msg.serialData.split(\"-\");\n\n//dato il protocollo creo delle variabili globali per gestire il messaggio\nmsg.medicalDeviceID = parts[1].trim()\nmsg.roomID = parts[2].trim()\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 930,
+        "y": 720,
+        "wires": [
+            [
+                "9bedcce7720f9f78"
+            ]
+        ]
+    },
+    {
+        "id": "189517aa418b6be2",
+        "type": "file in",
+        "z": "09012e75c72a4968",
+        "name": "read file",
+        "filename": "/home/giacomo/nodeRed/type5.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "utf8",
+        "allProps": false,
+        "x": 1160,
+        "y": 780,
+        "wires": [
+            [
+                "d1be411bbad65001"
+            ]
+        ]
+    },
+    {
+        "id": "637a5d6856e31424",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "processSerialData",
+        "func": "var parts = msg.serialData.split(\"-\");\n\n//dato il protocollo creo delle variabili globali per gestire il messaggio\nmsg.patientID = parts[1].trim()\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 930,
+        "y": 780,
+        "wires": [
+            [
+                "189517aa418b6be2"
+            ]
+        ]
+    },
+    {
+        "id": "3cb60112ba87b410",
+        "type": "file in",
+        "z": "09012e75c72a4968",
+        "name": "read file",
+        "filename": "/home/giacomo/nodeRed/type3.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "utf8",
+        "allProps": false,
+        "x": 1160,
+        "y": 660,
+        "wires": [
+            [
+                "9695e6816e740aaf"
+            ]
+        ]
+    },
+    {
+        "id": "37741262158114fd",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "processSerialData",
+        "func": "var parts = msg.serialData.split(\"-\");\n\n//dato il protocollo creo delle variabili globali per gestire il messaggio\nmsg.actuatorID = parts[1].trim()\nmsg.actuatorType = parts[2].trim()\nmsg.roomID = parts[3].trim()\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 930,
+        "y": 840,
+        "wires": [
+            [
+                "c8a766200204abe5"
+            ]
+        ]
+    },
+    {
+        "id": "c45a10208faeea88",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "add header ",
+        "func": "msg.headers = {};\nmsg.headers['Authorization'] = \"Bearer \" + msg.token\nmsg.headers['Content-Type'] = \"application/json\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1790,
+        "y": 660,
+        "wires": [
+            [
+                "6a5968a77bdcb8ec"
+            ]
+        ]
+    },
+    {
+        "id": "6a5968a77bdcb8ec",
+        "type": "https-node",
+        "z": "09012e75c72a4968",
+        "name": "",
+        "method": "use",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": true,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 1970,
+        "y": 660,
+        "wires": [
+            [
+                "3e879afc64077b51"
+            ]
+        ]
+    },
+    {
+        "id": "3a01a886905e5fed",
+        "type": "http in",
+        "z": "09012e75c72a4968",
+        "name": "ActuatorCommand",
+        "url": "/:actuatorID/:state",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 130,
+        "y": 980,
+        "wires": [
+            [
+                "d95b89b933ecab60"
+            ]
+        ]
+    },
+    {
+        "id": "3e879afc64077b51",
+        "type": "debug",
+        "z": "09012e75c72a4968",
+        "name": "response",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2140,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "5c6d578149de144a",
+        "type": "file",
+        "z": "09012e75c72a4968",
+        "name": "write file",
+        "filename": "/home/giacomo/nodeRed/actuator_room_mapping.json",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "true",
+        "encoding": "utf8",
+        "x": 1580,
+        "y": 840,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c8a766200204abe5",
+        "type": "file in",
+        "z": "09012e75c72a4968",
+        "name": "read file",
+        "filename": "/home/giacomo/nodeRed/actuator_room_mapping.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "utf8",
+        "allProps": false,
+        "x": 1160,
+        "y": 840,
+        "wires": [
+            [
+                "f749ed1e2e58c229"
+            ]
+        ]
+    },
+    {
+        "id": "a3885c62d3b2ed9e",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "getType",
+        "func": "//let parts = msg.serialData.split(\"-\");\nlet jsonData = JSON.parse(msg.payload);\n\n//msg.type = parts[0].trim()\nmsg.type = jsonData[\"type\"];  \n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 540,
+        "wires": [
+            [
+                "9d6fa57b1db1e8b3"
+            ]
+        ]
+    },
+    {
+        "id": "5ff43b84fbe92a30",
+        "type": "comment",
+        "z": "09012e75c72a4968",
+        "name": "",
+        "info": "da arduino ricevo attuatore, tipo di attuatore e room corrispondente",
+        "x": 1160,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "8b23d4b6fc9ad1ef",
+        "type": "file in",
+        "z": "09012e75c72a4968",
+        "name": "read actuator_room_mapping",
+        "filename": "/home/giacomo/nodeRed/actuator_room_mapping.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "utf8",
+        "allProps": false,
+        "x": 670,
+        "y": 980,
+        "wires": [
+            [
+                "1107f97b9aa49722"
+            ]
+        ]
+    },
+    {
+        "id": "d95b89b933ecab60",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "getActuatorIDAndState",
+        "func": "msg.actuatorID = msg.req.params.actuatorID\nmsg.command = msg.req.params.state\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 980,
+        "wires": [
+            [
+                "8b23d4b6fc9ad1ef"
+            ]
+        ]
+    },
+    {
+        "id": "1107f97b9aa49722",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "getRoomIDAndActuatorType",
+        "func": "let jsonData = JSON.parse(msg.payload);\nmsg.roomID = jsonData[msg.actuatorID][\"room\"]\nmsg.type = jsonData[msg.actuatorID][\"type\"]\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 980,
+        "y": 980,
+        "wires": [
+            [
+                "19b43e1a0fb43f50"
+            ]
+        ]
+    },
+    {
+        "id": "19b43e1a0fb43f50",
+        "type": "file in",
+        "z": "09012e75c72a4968",
+        "name": "read room_arduino_mapping",
+        "filename": "/home/giacomo/nodeRed/arduino_room_mapping.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "utf8",
+        "allProps": false,
+        "x": 1270,
+        "y": 980,
+        "wires": [
+            [
+                "0bcfc84520ddafb2"
+            ]
+        ]
+    },
+    {
+        "id": "0bcfc84520ddafb2",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "getSerial",
+        "func": "let jsonData = JSON.parse(msg.payload);\nmsg.serial = jsonData[msg.room]\nmsg.payload = msg.type + \"-\" + msg.roomID + \"-\" + msg.state\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1520,
+        "y": 980,
+        "wires": [
+            [
+                "c38d2690eac04451"
+            ]
+        ]
+    },
+    {
+        "id": "c38d2690eac04451",
+        "type": "switch",
+        "z": "09012e75c72a4968",
+        "name": "SerialSwitch",
+        "property": "serial",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 4,
+        "x": 1710,
+        "y": 980,
+        "wires": [
+            [
+                "3153f241b098b8da"
+            ],
+            [
+                "68bece8a028d4db7"
+            ],
+            [
+                "3925d80434bc9041"
+            ],
+            [
+                "9d1194a5b7dea3ed"
+            ]
+        ]
+    },
+    {
+        "id": "3153f241b098b8da",
+        "type": "debug",
+        "z": "09012e75c72a4968",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1900,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "9d1194a5b7dea3ed",
+        "type": "debug",
+        "z": "09012e75c72a4968",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1900,
+        "y": 1040,
+        "wires": []
+    },
+    {
+        "id": "3925d80434bc9041",
+        "type": "debug",
+        "z": "09012e75c72a4968",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1900,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "68bece8a028d4db7",
+        "type": "debug",
+        "z": "09012e75c72a4968",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1900,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "5941b09a0ae77bc7",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "setRequestToGetToken",
+        "func": "msg.headers = {};\nmsg.headers['Content-Type'] = \"application/x-www-form-urlencoded\"\nmsg.payload =  `grant_type = client_credentials &\n                client_id = 8b0ac1d0-a5aa-4bcf-ae19-7f045016fdea &\n                client_secret = D7D8Q~2p3rLraUk8eY3dz-DjJlbLMOpJ9LYWLan. &\n                resource = https://digitaltwins.azure.net \n                `\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1250,
+        "y": 180,
+        "wires": [
+            [
+                "dd96318fc1b5b6c4"
+            ]
+        ]
+    },
+    {
+        "id": "dd96318fc1b5b6c4",
+        "type": "https-node",
+        "z": "09012e75c72a4968",
+        "name": "getToken",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "body",
+        "url": "https://login.microsoftonline.com/dcd04e3e-49bc-4f06-9237-a830cf4d6403/oauth2/token",
+        "tls": "",
+        "persist": true,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 1440,
+        "y": 180,
+        "wires": [
+            [
+                "1453612b8d0a384b"
+            ]
+        ]
+    },
+    {
+        "id": "1453612b8d0a384b",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "saveToken",
+        "func": "msg.token = msg.payload[\"access_token\"]\nmsg.expiresOn = msg.payload[\"expires_on\"]\nmsg.payload = {}\nmsg.payload[\"expiresOn\"] = msg.expiresOn\nmsg.payload[\"token\"] = msg.token\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1590,
+        "y": 180,
+        "wires": [
+            [
+                "4c9a183fe7d56c66"
+            ]
+        ]
+    },
+    {
+        "id": "d2d0866c15fa7ca3",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "checkIfTokenExpired",
+        "func": "msg.payload = parseJson(msg.payload);\n\nif(msg.payload == \"\"){\n    msg.tokenExpired = true\n}else{\n    msg.tokenExpiresOn = msg.payload[\"expiresOn\"]\n    let fiveMinutesInUnixEpoch = 300\n    msg.tokenExpired = (msg.tokenExpiresOn - fiveMinutesInUnixEpoch) < Math.floor(Date.now() / 1000)\n}\n\nfunction parseJson(string) {\n    return string === \"\" ? \"\" : JSON.parse(string)\n}\nreturn msg;\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 840,
+        "y": 240,
+        "wires": [
+            [
+                "8f2451a34256b4dc"
+            ]
+        ]
+    },
+    {
+        "id": "8f2451a34256b4dc",
+        "type": "switch",
+        "z": "09012e75c72a4968",
+        "name": "tokenExpiredSwitch",
+        "property": "tokenExpired",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1080,
+        "y": 240,
+        "wires": [
+            [
+                "5941b09a0ae77bc7"
+            ],
+            [
+                "be71706450cf31db"
+            ]
+        ]
+    },
+    {
+        "id": "272e66b82d47e0e4",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "getSerialData",
+        "func": "msg.serialData = msg.payload\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 240,
+        "wires": [
+            [
+                "eb9d520bd5382640"
+            ]
+        ]
+    },
+    {
+        "id": "eb9d520bd5382640",
+        "type": "file in",
+        "z": "09012e75c72a4968",
+        "name": "getToken",
+        "filename": "/home/giacomo/nodeRed/token.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 640,
+        "y": 240,
+        "wires": [
+            [
+                "d2d0866c15fa7ca3"
+            ]
+        ]
+    },
+    {
+        "id": "4c9a183fe7d56c66",
+        "type": "file",
+        "z": "09012e75c72a4968",
+        "name": "writeToken",
+        "filename": "/home/giacomo/nodeRed/token.json",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "true",
+        "encoding": "utf8",
+        "x": 1770,
+        "y": 180,
+        "wires": [
+            [
+                "a3885c62d3b2ed9e"
+            ]
+        ]
+    },
+    {
+        "id": "be71706450cf31db",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "setToken",
+        "func": "msg.token = msg.payload[\"token\"]\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 760,
+        "y": 340,
+        "wires": [
+            [
+                "a3885c62d3b2ed9e"
+            ]
+        ]
+    },
+    {
+        "id": "6b1290a059fc78a2",
+        "type": "serial in",
+        "z": "09012e75c72a4968",
+        "name": "",
+        "serial": "",
+        "x": 230,
+        "y": 240,
+        "wires": [
+            [
+                "272e66b82d47e0e4"
+            ]
+        ]
+    }
+]
