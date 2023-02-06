@@ -1,12 +1,13 @@
-FROM nodered/node-red
+    FROM nodered/node-red
 
-COPY data/package.json /data/package.json 
+COPY package.json /data/package.json 
 RUN npm install 
 #--unsafe-perm --no-update-notifier --no-fund --only=production
 
 # Copy Node-RED project files into place
-COPY data/settings.js /data/settings.js  
-COPY data/flows.json /data/flows.json
+COPY settings.js /data/settings.js  
+COPY flows.json /data/flows.json
+COPY configFiles /data/configFiles
 
 #Install additional node
 WORKDIR /usr/src/node-red
