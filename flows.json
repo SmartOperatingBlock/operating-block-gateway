@@ -1362,5 +1362,34 @@
                 "b8465449f8f024c3"
             ]
         ]
+    },
+    {
+        "id": "fd738f445c2a696f",
+        "type": "inject",
+        "z": "09012e75c72a4968",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"type\":0, \"room_id\": \"room1\", \"temperature_value\": 23, \"temperature_unit\": \"celsius\"}",
+        "payloadType": "json",
+        "x": 90,
+        "y": 80,
+        "wires": [
+            [
+                "ead8458e27835fd5"
+            ]
+        ]
     }
 ]
