@@ -176,26 +176,6 @@
         ]
     },
     {
-        "id": "dc71330618798ae2",
-        "type": "file in",
-        "z": "09012e75c72a4968",
-        "name": "read file",
-        "filename": "/home/giacomo/nodeRed/type1.json",
-        "filenameType": "str",
-        "format": "utf8",
-        "chunk": false,
-        "sendError": false,
-        "encoding": "utf8",
-        "allProps": false,
-        "x": 1160,
-        "y": 740,
-        "wires": [
-            [
-                "c4db83d867cd1492"
-            ]
-        ]
-    },
-    {
         "id": "976a5466bc4b4345",
         "type": "function",
         "z": "09012e75c72a4968",
@@ -210,27 +190,7 @@
         "y": 740,
         "wires": [
             [
-                "dc71330618798ae2"
-            ]
-        ]
-    },
-    {
-        "id": "aae77acf1eb6c588",
-        "type": "file in",
-        "z": "09012e75c72a4968",
-        "name": "read file",
-        "filename": "/home/giacomo/nodeRed/type2.json",
-        "filenameType": "str",
-        "format": "utf8",
-        "chunk": false,
-        "sendError": false,
-        "encoding": "utf8",
-        "allProps": false,
-        "x": 1160,
-        "y": 800,
-        "wires": [
-            [
-                "38965161414b027a"
+                "635a32e66dd92586"
             ]
         ]
     },
@@ -249,7 +209,7 @@
         "y": 800,
         "wires": [
             [
-                "aae77acf1eb6c588"
+                "145386797b8afe53"
             ]
         ]
     },
@@ -258,7 +218,7 @@
         "type": "file in",
         "z": "09012e75c72a4968",
         "name": "read file",
-        "filename": "/home/giacomo/nodeRed/type0.json",
+        "filename": "data/type0.json",
         "filenameType": "str",
         "format": "utf8",
         "chunk": false,
@@ -371,26 +331,6 @@
         ]
     },
     {
-        "id": "9bedcce7720f9f78",
-        "type": "file in",
-        "z": "09012e75c72a4968",
-        "name": "read file",
-        "filename": "/home/giacomo/nodeRed/type4.json",
-        "filenameType": "str",
-        "format": "utf8",
-        "chunk": false,
-        "sendError": false,
-        "encoding": "utf8",
-        "allProps": false,
-        "x": 1150,
-        "y": 860,
-        "wires": [
-            [
-                "dcc8abdf633f1c30"
-            ]
-        ]
-    },
-    {
         "id": "269af3b43e760d2b",
         "type": "function",
         "z": "09012e75c72a4968",
@@ -405,27 +345,7 @@
         "y": 860,
         "wires": [
             [
-                "9bedcce7720f9f78"
-            ]
-        ]
-    },
-    {
-        "id": "189517aa418b6be2",
-        "type": "file in",
-        "z": "09012e75c72a4968",
-        "name": "read file",
-        "filename": "/home/giacomo/nodeRed/type5.json",
-        "filenameType": "str",
-        "format": "utf8",
-        "chunk": false,
-        "sendError": false,
-        "encoding": "utf8",
-        "allProps": false,
-        "x": 1150,
-        "y": 920,
-        "wires": [
-            [
-                "d1be411bbad65001"
+                "cb314a12c20513b3"
             ]
         ]
     },
@@ -444,7 +364,7 @@
         "y": 920,
         "wires": [
             [
-                "189517aa418b6be2"
+                "3dc151189b79fc01"
             ]
         ]
     },
@@ -463,7 +383,7 @@
         "y": 980,
         "wires": [
             [
-                "c8a766200204abe5"
+                "f6e56c9200cdd690"
             ]
         ]
     },
@@ -557,26 +477,6 @@
         "y": 980,
         "wires": [
             []
-        ]
-    },
-    {
-        "id": "c8a766200204abe5",
-        "type": "file in",
-        "z": "09012e75c72a4968",
-        "name": "read file",
-        "filename": "/home/giacomo/nodeRed/actuator_room_mapping.json",
-        "filenameType": "str",
-        "format": "utf8",
-        "chunk": false,
-        "sendError": false,
-        "encoding": "utf8",
-        "allProps": false,
-        "x": 1150,
-        "y": 980,
-        "wires": [
-            [
-                "f749ed1e2e58c229"
-            ]
         ]
     },
     {
@@ -876,7 +776,7 @@
         "type": "file in",
         "z": "09012e75c72a4968",
         "name": "getToken",
-        "filename": "/home/giacomo/nodeRed/token.json",
+        "filename": "data/token.json",
         "filenameType": "str",
         "format": "utf8",
         "chunk": false,
@@ -896,7 +796,7 @@
         "type": "file",
         "z": "09012e75c72a4968",
         "name": "writeToken",
-        "filename": "/home/giacomo/nodeRed/token.json",
+        "filename": "data/token.json",
         "filenameType": "str",
         "appendNewline": true,
         "createDir": false,
@@ -1076,7 +976,7 @@
         "y": 560,
         "wires": [
             [
-                "e770b6a2ff9e25f5"
+                "3af5bf281111cdf5"
             ]
         ]
     },
@@ -1095,7 +995,7 @@
         "y": 620,
         "wires": [
             [
-                "57b6645080cb8804"
+                "eff2c757e27ebc08"
             ]
         ]
     },
@@ -1114,7 +1014,7 @@
         "y": 680,
         "wires": [
             [
-                "456c22d73d75507b"
+                "e944970a233c812f"
             ]
         ]
     },
@@ -1176,66 +1076,6 @@
         ]
     },
     {
-        "id": "e770b6a2ff9e25f5",
-        "type": "file in",
-        "z": "09012e75c72a4968",
-        "name": "read file",
-        "filename": "/home/giacomo/nodeRed/type0.json",
-        "filenameType": "str",
-        "format": "utf8",
-        "chunk": false,
-        "sendError": false,
-        "encoding": "utf8",
-        "allProps": false,
-        "x": 1160,
-        "y": 560,
-        "wires": [
-            [
-                "931fbc85cf48c3ad"
-            ]
-        ]
-    },
-    {
-        "id": "57b6645080cb8804",
-        "type": "file in",
-        "z": "09012e75c72a4968",
-        "name": "read file",
-        "filename": "/home/giacomo/nodeRed/type0.json",
-        "filenameType": "str",
-        "format": "utf8",
-        "chunk": false,
-        "sendError": false,
-        "encoding": "utf8",
-        "allProps": false,
-        "x": 1160,
-        "y": 620,
-        "wires": [
-            [
-                "c1a003d2e63c8fc7"
-            ]
-        ]
-    },
-    {
-        "id": "456c22d73d75507b",
-        "type": "file in",
-        "z": "09012e75c72a4968",
-        "name": "read file",
-        "filename": "/home/giacomo/nodeRed/type0.json",
-        "filenameType": "str",
-        "format": "utf8",
-        "chunk": false,
-        "sendError": false,
-        "encoding": "utf8",
-        "allProps": false,
-        "x": 1160,
-        "y": 680,
-        "wires": [
-            [
-                "f495c7f7c9e65097"
-            ]
-        ]
-    },
-    {
         "id": "b8465449f8f024c3",
         "type": "function",
         "z": "09012e75c72a4968",
@@ -1269,7 +1109,7 @@
         "y": 1040,
         "wires": [
             [
-                "df7f1197755f3c8e"
+                "3dd49201b59cb7f9"
             ]
         ]
     },
@@ -1288,26 +1128,6 @@
         "y": 1040,
         "wires": [
             []
-        ]
-    },
-    {
-        "id": "df7f1197755f3c8e",
-        "type": "file in",
-        "z": "09012e75c72a4968",
-        "name": "read file",
-        "filename": "/home/giacomo/nodeRed/arduino_room_mapping.json",
-        "filenameType": "str",
-        "format": "utf8",
-        "chunk": false,
-        "sendError": false,
-        "encoding": "utf8",
-        "allProps": false,
-        "x": 1160,
-        "y": 1040,
-        "wires": [
-            [
-                "b8465449f8f024c3"
-            ]
         ]
     },
     {
@@ -1362,5 +1182,185 @@
         "x": 2070,
         "y": 1280,
         "wires": []
+    },
+    {
+        "id": "3af5bf281111cdf5",
+        "type": "file in",
+        "z": "09012e75c72a4968",
+        "name": "read file",
+        "filename": "data/type0.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "utf8",
+        "allProps": false,
+        "x": 1160,
+        "y": 560,
+        "wires": [
+            [
+                "931fbc85cf48c3ad"
+            ]
+        ]
+    },
+    {
+        "id": "eff2c757e27ebc08",
+        "type": "file in",
+        "z": "09012e75c72a4968",
+        "name": "read file",
+        "filename": "data/type0.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "utf8",
+        "allProps": false,
+        "x": 1160,
+        "y": 620,
+        "wires": [
+            [
+                "c1a003d2e63c8fc7"
+            ]
+        ]
+    },
+    {
+        "id": "e944970a233c812f",
+        "type": "file in",
+        "z": "09012e75c72a4968",
+        "name": "read file",
+        "filename": "data/type0.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "utf8",
+        "allProps": false,
+        "x": 1160,
+        "y": 680,
+        "wires": [
+            [
+                "f495c7f7c9e65097"
+            ]
+        ]
+    },
+    {
+        "id": "635a32e66dd92586",
+        "type": "file in",
+        "z": "09012e75c72a4968",
+        "name": "read file",
+        "filename": "data/type0.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "utf8",
+        "allProps": false,
+        "x": 1160,
+        "y": 740,
+        "wires": [
+            [
+                "c4db83d867cd1492"
+            ]
+        ]
+    },
+    {
+        "id": "145386797b8afe53",
+        "type": "file in",
+        "z": "09012e75c72a4968",
+        "name": "read file",
+        "filename": "data/type0.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "utf8",
+        "allProps": false,
+        "x": 1160,
+        "y": 800,
+        "wires": [
+            [
+                "38965161414b027a"
+            ]
+        ]
+    },
+    {
+        "id": "cb314a12c20513b3",
+        "type": "file in",
+        "z": "09012e75c72a4968",
+        "name": "read file",
+        "filename": "data/type0.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "utf8",
+        "allProps": false,
+        "x": 1160,
+        "y": 860,
+        "wires": [
+            [
+                "dcc8abdf633f1c30"
+            ]
+        ]
+    },
+    {
+        "id": "3dc151189b79fc01",
+        "type": "file in",
+        "z": "09012e75c72a4968",
+        "name": "read file",
+        "filename": "data/type0.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "utf8",
+        "allProps": false,
+        "x": 1160,
+        "y": 920,
+        "wires": [
+            [
+                "d1be411bbad65001"
+            ]
+        ]
+    },
+    {
+        "id": "f6e56c9200cdd690",
+        "type": "file in",
+        "z": "09012e75c72a4968",
+        "name": "read file",
+        "filename": "data/type0.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "utf8",
+        "allProps": false,
+        "x": 1160,
+        "y": 980,
+        "wires": [
+            [
+                "f749ed1e2e58c229"
+            ]
+        ]
+    },
+    {
+        "id": "3dd49201b59cb7f9",
+        "type": "file in",
+        "z": "09012e75c72a4968",
+        "name": "read file",
+        "filename": "data/type0.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "utf8",
+        "allProps": false,
+        "x": 1160,
+        "y": 1040,
+        "wires": [
+            [
+                "b8465449f8f024c3"
+            ]
+        ]
     }
 ]
