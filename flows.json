@@ -513,7 +513,7 @@
         "type": "http in",
         "z": "09012e75c72a4968",
         "name": "ActuatorCommand",
-        "url": "/:actuatorID/:state",
+        "url": "/:actuator_id/:state",
         "method": "post",
         "upload": false,
         "swaggerDoc": "",
@@ -623,7 +623,7 @@
         "type": "function",
         "z": "09012e75c72a4968",
         "name": "getActuatorIDAndState",
-        "func": "msg.actuatorID = msg.req.params.actuatorID\nmsg.command = msg.req.params.state\n\nreturn msg;",
+        "func": "msg.actuator_id = msg.req.params.actuator_id\nmsg.state = msg.req.params.state\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -642,7 +642,7 @@
         "type": "function",
         "z": "09012e75c72a4968",
         "name": "getRoomIDAndActuatorType",
-        "func": "let jsonData = JSON.parse(msg.payload);\nmsg.roomID = jsonData[msg.actuatorID][\"room\"]\nmsg.type = jsonData[msg.actuatorID][\"type\"]\nreturn msg;",
+        "func": "let jsonData = JSON.parse(msg.payload);\nmsg.roomID = jsonData[msg.actuator_id][\"room\"]\nmsg.type = jsonData[msg.actuator_id][\"type\"]\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -681,7 +681,7 @@
         "type": "function",
         "z": "09012e75c72a4968",
         "name": "getSerial",
-        "func": "let jsonData = JSON.parse(msg.payload);\nmsg.serial = jsonData[msg.room]\nmsg.payload = msg.type + \"-\" + msg.roomID + \"-\" + msg.state\nreturn msg;",
+        "func": "let jsonData = JSON.parse(msg.payload);\nmsg.serial = jsonData[msg.room]\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -691,7 +691,7 @@
         "y": 1300,
         "wires": [
             [
-                "c38d2690eac04451"
+                "334dc786bd2b068a"
             ]
         ]
     },
@@ -727,87 +727,22 @@
         "checkall": "true",
         "repair": false,
         "outputs": 4,
-        "x": 1950,
+        "x": 1890,
         "y": 1300,
         "wires": [
             [
-                "3153f241b098b8da"
+                "ca7739b93cae03dd"
             ],
             [
-                "68bece8a028d4db7"
+                "f0483d0112ec86ef"
             ],
             [
-                "3925d80434bc9041"
+                "0b6a7dbffdb23c6e"
             ],
             [
-                "9d1194a5b7dea3ed"
+                "b45cf93febf9d58d"
             ]
         ]
-    },
-    {
-        "id": "3153f241b098b8da",
-        "type": "debug",
-        "z": "09012e75c72a4968",
-        "name": "debug 1",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 2220,
-        "y": 1240,
-        "wires": []
-    },
-    {
-        "id": "9d1194a5b7dea3ed",
-        "type": "debug",
-        "z": "09012e75c72a4968",
-        "name": "debug 2",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 2220,
-        "y": 1360,
-        "wires": []
-    },
-    {
-        "id": "3925d80434bc9041",
-        "type": "debug",
-        "z": "09012e75c72a4968",
-        "name": "debug 3",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 2220,
-        "y": 1320,
-        "wires": []
-    },
-    {
-        "id": "68bece8a028d4db7",
-        "type": "debug",
-        "z": "09012e75c72a4968",
-        "name": "debug 4",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 2220,
-        "y": 1280,
-        "wires": []
     },
     {
         "id": "5941b09a0ae77bc7",
@@ -1374,5 +1309,58 @@
                 "b8465449f8f024c3"
             ]
         ]
+    },
+    {
+        "id": "334dc786bd2b068a",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "setSerialMessage",
+        "func": "msg.payload = {}\nmsg.payload[\"command\"] = msg.type\nmsg.payload[\"room_id\"] = msg.room_id\nmsg.payload[\"status\"] = msg.state\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1710,
+        "y": 1300,
+        "wires": [
+            [
+                "c38d2690eac04451"
+            ]
+        ]
+    },
+    {
+        "id": "ca7739b93cae03dd",
+        "type": "serial out",
+        "z": "09012e75c72a4968",
+        "name": "",
+        "serial": "94b8abb47e4cb1f2",
+        "x": 2100,
+        "y": 1240,
+        "wires": []
+    },
+    {
+        "id": "0b6a7dbffdb23c6e",
+        "type": "serial out",
+        "z": "09012e75c72a4968",
+        "x": 2070,
+        "y": 1320,
+        "wires": []
+    },
+    {
+        "id": "b45cf93febf9d58d",
+        "type": "serial out",
+        "z": "09012e75c72a4968",
+        "x": 2070,
+        "y": 1360,
+        "wires": []
+    },
+    {
+        "id": "f0483d0112ec86ef",
+        "type": "serial out",
+        "z": "09012e75c72a4968",
+        "x": 2070,
+        "y": 1280,
+        "wires": []
     }
 ]
