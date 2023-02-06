@@ -1,8 +1,7 @@
-    FROM nodered/node-red
+FROM --platform=linux/arm/v7 nodered/node-red:2.2.3-12
 
 COPY package.json /data/package.json 
 RUN npm install 
-#--unsafe-perm --no-update-notifier --no-fund --only=production
 
 # Copy Node-RED project files into place
 COPY settings.js /data/settings.js  
