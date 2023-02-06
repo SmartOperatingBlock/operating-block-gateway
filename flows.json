@@ -706,7 +706,7 @@
         "type": "function",
         "z": "09012e75c72a4968",
         "name": "setRequestToGetToken",
-        "func": "msg.headers = {};\nmsg.headers['Content-Type'] = \"application/x-www-form-urlencoded\"\nmsg.payload =  `grant_type = client_credentials &\n                client_id = 8b0ac1d0-a5aa-4bcf-ae19-7f045016fdea &\n                client_secret =` + env.get(\"clientSecret\") + ` &\n                resource = https://digitaltwins.azure.net \n                `\nreturn msg;",
+        "func": "msg.headers = {};\nmsg.headers['Content-Type'] = \"application/x-www-form-urlencoded\"\nmsg.payload =  `grant_type = client_credentials &\n                client_id = ` +env.get(\"CLIENT_ID\") + ` &\n                client_secret =` + env.get(\"CLIENT_SECRET\") + ` &\n                resource = https://digitaltwins.azure.net \n                `\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
