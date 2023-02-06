@@ -15,8 +15,6 @@ jobs:
     concurrency:
         # Allow only one release at a time.
         group: release-${{ github.event.number || github.ref }}
-    needs:
-      - build
     runs-on: ubuntu-latest
     outputs:
       release-status: ${{ env.release_status }}
