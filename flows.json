@@ -24,6 +24,25 @@
         "env": []
     },
     {
+        "id": "94b8abb47e4cb1f2",
+        "type": "serial-port",
+        "serialport": "",
+        "serialbaud": "115200",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": "10000"
+    },
+    {
         "id": "32174867b86c7b03",
         "type": "function",
         "z": "09012e75c72a4968",
@@ -47,7 +66,7 @@
         "type": "function",
         "z": "09012e75c72a4968",
         "name": "processSerialData",
-        "func": "//var parts = msg.serialData.split(\"-\");\nlet parts = JSON.parse(msg.serialData); \n\n//dato il protocollo creo delle variabili globali per gestire il messaggio\n//msg.roomID = parts[1].trim()\n//msg.valueChanged = parts[2].trim()\n//msg.value = parts[3].trim()\n\nmsg.room_id = parts[\"room_id\"]\nmsg.temperature_value = parts[\"temperature_value\"]\nmsg.temperature_unit = parts[\"temperature_unit\"]\n\n\n\n\nreturn msg;",
+        "func": "let parts = JSON.parse(msg.serialData); \n\nmsg.room_id = parts[\"room_id\"]\nmsg.temperature_value = parts[\"temperature_value\"]\nmsg.temperature_unit = parts[\"temperature_unit\"]\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -533,7 +552,7 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 130,
-        "y": 980,
+        "y": 1300,
         "wires": [
             [
                 "d95b89b933ecab60"
@@ -614,16 +633,6 @@
         ]
     },
     {
-        "id": "5ff43b84fbe92a30",
-        "type": "comment",
-        "z": "09012e75c72a4968",
-        "name": "",
-        "info": "da arduino ricevo attuatore, tipo di attuatore e room corrispondente",
-        "x": 1160,
-        "y": 880,
-        "wires": []
-    },
-    {
         "id": "8b23d4b6fc9ad1ef",
         "type": "file in",
         "z": "09012e75c72a4968",
@@ -636,7 +645,7 @@
         "encoding": "utf8",
         "allProps": false,
         "x": 670,
-        "y": 980,
+        "y": 1300,
         "wires": [
             [
                 "1107f97b9aa49722"
@@ -655,7 +664,7 @@
         "finalize": "",
         "libs": [],
         "x": 370,
-        "y": 980,
+        "y": 1300,
         "wires": [
             [
                 "8b23d4b6fc9ad1ef"
@@ -674,7 +683,7 @@
         "finalize": "",
         "libs": [],
         "x": 980,
-        "y": 980,
+        "y": 1300,
         "wires": [
             [
                 "19b43e1a0fb43f50"
@@ -694,7 +703,7 @@
         "encoding": "utf8",
         "allProps": false,
         "x": 1270,
-        "y": 980,
+        "y": 1300,
         "wires": [
             [
                 "0bcfc84520ddafb2"
@@ -713,7 +722,7 @@
         "finalize": "",
         "libs": [],
         "x": 1520,
-        "y": 980,
+        "y": 1300,
         "wires": [
             [
                 "c38d2690eac04451"
@@ -753,7 +762,7 @@
         "repair": false,
         "outputs": 4,
         "x": 1710,
-        "y": 980,
+        "y": 1300,
         "wires": [
             [
                 "3153f241b098b8da"
@@ -783,7 +792,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1900,
-        "y": 920,
+        "y": 1240,
         "wires": []
     },
     {
@@ -799,7 +808,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1900,
-        "y": 1040,
+        "y": 1360,
         "wires": []
     },
     {
@@ -815,7 +824,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1900,
-        "y": 1000,
+        "y": 1320,
         "wires": []
     },
     {
@@ -831,7 +840,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1900,
-        "y": 960,
+        "y": 1280,
         "wires": []
     },
     {
@@ -1024,9 +1033,127 @@
         "type": "serial in",
         "z": "09012e75c72a4968",
         "name": "",
+        "serial": "94b8abb47e4cb1f2",
+        "x": 90,
+        "y": 180,
+        "wires": [
+            [
+                "ead8458e27835fd5"
+            ]
+        ]
+    },
+    {
+        "id": "d86ee55246645576",
+        "type": "serial in",
+        "z": "09012e75c72a4968",
+        "name": "",
         "serial": "",
-        "x": 230,
-        "y": 240,
+        "x": 90,
+        "y": 220,
+        "wires": [
+            [
+                "f5d4b6da7502dcc5"
+            ]
+        ]
+    },
+    {
+        "id": "f58ad2d2abbb5940",
+        "type": "serial in",
+        "z": "09012e75c72a4968",
+        "name": "",
+        "serial": "",
+        "x": 90,
+        "y": 260,
+        "wires": [
+            [
+                "95a015623724305b"
+            ]
+        ]
+    },
+    {
+        "id": "31a34bfbb86c9ddc",
+        "type": "serial in",
+        "z": "09012e75c72a4968",
+        "name": "",
+        "serial": "",
+        "x": 90,
+        "y": 300,
+        "wires": [
+            [
+                "490f2072cd94d40a"
+            ]
+        ]
+    },
+    {
+        "id": "ead8458e27835fd5",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "setSerial",
+        "func": "msg.serialID = \"/dev/tty/USB0\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 240,
+        "y": 180,
+        "wires": [
+            [
+                "272e66b82d47e0e4"
+            ]
+        ]
+    },
+    {
+        "id": "f5d4b6da7502dcc5",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "setSerial",
+        "func": "msg.serialID = \"/dev/tty/USB1\"\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 240,
+        "y": 220,
+        "wires": [
+            [
+                "272e66b82d47e0e4"
+            ]
+        ]
+    },
+    {
+        "id": "95a015623724305b",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "setSerial",
+        "func": "msg.serialID = \"/dev/tty/USB2\"\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 240,
+        "y": 260,
+        "wires": [
+            [
+                "272e66b82d47e0e4"
+            ]
+        ]
+    },
+    {
+        "id": "490f2072cd94d40a",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "setSerial",
+        "func": "msg.serialID = \"/dev/tty/USB3\"\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 240,
+        "y": 300,
         "wires": [
             [
                 "272e66b82d47e0e4"
