@@ -70,6 +70,7 @@ jobs:
         with:
           context: .
           push: true
+          platforms: linux/arm/v7
           tags: ${{ steps.full-image-name.outputs.image-name }}:latest, ${{ steps.full-image-name.outputs.image-name }}:${{ needs.release.outputs.release-version }}
   success:
     runs-on: ubuntu-22.04
