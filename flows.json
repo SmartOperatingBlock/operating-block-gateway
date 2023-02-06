@@ -644,7 +644,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1520,
+        "x": 1500,
         "y": 1300,
         "wires": [
             [
@@ -688,17 +688,11 @@
         "y": 1300,
         "wires": [
             [
-                "ca7739b93cae03dd"
+                "ea1d80c07843fb89"
             ],
-            [
-                "f0483d0112ec86ef"
-            ],
-            [
-                "0b6a7dbffdb23c6e"
-            ],
-            [
-                "b45cf93febf9d58d"
-            ]
+            [],
+            [],
+            []
         ]
     },
     {
@@ -1075,46 +1069,6 @@
         ]
     },
     {
-        "id": "ca7739b93cae03dd",
-        "type": "serial out",
-        "z": "09012e75c72a4968",
-        "name": "",
-        "serial": "94b8abb47e4cb1f2",
-        "x": 2100,
-        "y": 1240,
-        "wires": []
-    },
-    {
-        "id": "0b6a7dbffdb23c6e",
-        "type": "serial out",
-        "z": "09012e75c72a4968",
-        "name": "",
-        "serial": "2fa64a6ae4bfad03",
-        "x": 2100,
-        "y": 1320,
-        "wires": []
-    },
-    {
-        "id": "b45cf93febf9d58d",
-        "type": "serial out",
-        "z": "09012e75c72a4968",
-        "name": "",
-        "serial": "c413535be070623e",
-        "x": 2100,
-        "y": 1360,
-        "wires": []
-    },
-    {
-        "id": "f0483d0112ec86ef",
-        "type": "serial out",
-        "z": "09012e75c72a4968",
-        "name": "",
-        "serial": "346f85aea8590bba",
-        "x": 2100,
-        "y": 1280,
-        "wires": []
-    },
-    {
         "id": "3af5bf281111cdf5",
         "type": "file in",
         "z": "09012e75c72a4968",
@@ -1355,5 +1309,15 @@
                 "272e66b82d47e0e4"
             ]
         ]
+    },
+    {
+        "id": "ea1d80c07843fb89",
+        "type": "serial out",
+        "z": "09012e75c72a4968",
+        "name": "",
+        "serial": "94b8abb47e4cb1f2",
+        "x": 2150,
+        "y": 1280,
+        "wires": []
     }
 ]
