@@ -4,5 +4,21 @@
   },
   "engines": {
     "node": "18.14"
-  }
+  },
+  "name": "node-red-project",
+    "description": "A Node-RED Project",
+    "version": "0.0.1",
+    "private": true,
+    "dependencies": {
+        "node-red-contrib-azure-ad-auth": "~3.1.25",
+        "node-red-contrib-got": "~1.0.0",
+        "node-red-contrib-https": "~2.0.0",
+        "node-red-node-serialport": "~1.0.1"
+    },
+    "node-red": {
+        "settings": {
+            "flowFile": "flows.json",
+            "credentialsFile": "flows_cred.json"
+        }
+    }
 }
