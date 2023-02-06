@@ -1,4 +1,4 @@
-FROM --platform=linux/arm/v7 nodered/node-red:2.2.3-12
+FROM nodered/node-red:2.2.3-12
 
 COPY package.json /data/package.json 
 RUN npm install 
