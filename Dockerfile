@@ -12,3 +12,6 @@ COPY configFiles /data/configFiles
 WORKDIR /usr/src/node-red
 RUN npm install node-red-contrib-https
 RUN npm install node-red-node-serialport
+
+USER root
+RUN chmod 666 /data/configFiles/
