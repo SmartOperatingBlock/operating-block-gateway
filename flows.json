@@ -26,7 +26,7 @@
     {
         "id": "94b8abb47e4cb1f2",
         "type": "serial-port",
-        "serialport": "/dev/tty/USB0",
+        "serialport": "/dev/ttyUSB0",
         "serialbaud": "115200",
         "databits": "8",
         "parity": "none",
@@ -887,138 +887,6 @@
         ]
     },
     {
-        "id": "6b1290a059fc78a2",
-        "type": "serial in",
-        "z": "09012e75c72a4968",
-        "name": "",
-        "serial": "94b8abb47e4cb1f2",
-        "x": 110,
-        "y": 180,
-        "wires": [
-            [
-                "ead8458e27835fd5"
-            ]
-        ]
-    },
-    {
-        "id": "d86ee55246645576",
-        "type": "serial in",
-        "z": "09012e75c72a4968",
-        "name": "",
-        "serial": "346f85aea8590bba",
-        "x": 110,
-        "y": 220,
-        "wires": [
-            [
-                "f5d4b6da7502dcc5"
-            ]
-        ]
-    },
-    {
-        "id": "f58ad2d2abbb5940",
-        "type": "serial in",
-        "z": "09012e75c72a4968",
-        "name": "",
-        "serial": "2fa64a6ae4bfad03",
-        "x": 110,
-        "y": 260,
-        "wires": [
-            [
-                "95a015623724305b"
-            ]
-        ]
-    },
-    {
-        "id": "31a34bfbb86c9ddc",
-        "type": "serial in",
-        "z": "09012e75c72a4968",
-        "name": "",
-        "serial": "c413535be070623e",
-        "x": 110,
-        "y": 300,
-        "wires": [
-            [
-                "490f2072cd94d40a"
-            ]
-        ]
-    },
-    {
-        "id": "ead8458e27835fd5",
-        "type": "function",
-        "z": "09012e75c72a4968",
-        "name": "setSerial",
-        "func": "msg.serial_id = \"/dev/tty/USB0\"\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 280,
-        "y": 180,
-        "wires": [
-            [
-                "272e66b82d47e0e4"
-            ]
-        ]
-    },
-    {
-        "id": "f5d4b6da7502dcc5",
-        "type": "function",
-        "z": "09012e75c72a4968",
-        "name": "setSerial",
-        "func": "msg.serial_id = \"/dev/tty/USB1\"\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 280,
-        "y": 220,
-        "wires": [
-            [
-                "272e66b82d47e0e4"
-            ]
-        ]
-    },
-    {
-        "id": "95a015623724305b",
-        "type": "function",
-        "z": "09012e75c72a4968",
-        "name": "setSerial",
-        "func": "msg.serial_id = \"/dev/tty/USB2\"\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 280,
-        "y": 260,
-        "wires": [
-            [
-                "272e66b82d47e0e4"
-            ]
-        ]
-    },
-    {
-        "id": "490f2072cd94d40a",
-        "type": "function",
-        "z": "09012e75c72a4968",
-        "name": "setSerial",
-        "func": "msg.serial_id = \"/dev/tty/USB3\"\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 280,
-        "y": 300,
-        "wires": [
-            [
-                "272e66b82d47e0e4"
-            ]
-        ]
-    },
-    {
         "id": "e0959707dc172828",
         "type": "function",
         "z": "09012e75c72a4968",
@@ -1452,6 +1320,39 @@
         "wires": [
             [
                 "ead8458e27835fd5"
+            ]
+        ]
+    },
+    {
+        "id": "6b1290a059fc78a2",
+        "type": "serial in",
+        "z": "09012e75c72a4968",
+        "name": "",
+        "serial": "94b8abb47e4cb1f2",
+        "x": 110,
+        "y": 180,
+        "wires": [
+            [
+                "ead8458e27835fd5"
+            ]
+        ]
+    },
+    {
+        "id": "ead8458e27835fd5",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "setSerial",
+        "func": "msg.serial_id = \"/dev/tty/USB0\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 180,
+        "wires": [
+            [
+                "272e66b82d47e0e4"
             ]
         ]
     }
