@@ -218,7 +218,7 @@
         "type": "function",
         "z": "09012e75c72a4968",
         "name": "AvailableActuator",
-        "func": "let jsonData = parseJson(msg.payload);\n\njsonData[msg.actuatorID] = {\n    \"type\": msg.actuatorType,\n    \"room\": msg.roomID\n}\n\n//msg.payload = jsonData\nfunction parseJson(string){\n    return string === \"\" ? JSON.parse(\"{}\") : JSON.parse(string)\n}\n\nmsg.payload = jsonData\nreturn msg; \n\n",
+        "func": "let jsonData = parseJson(msg.payload);\n\njsonData[msg.actuator_id] = {\n    \"type\": msg.actuator_type,\n    \"room\": msg.room_id\n}\n\n//msg.payload = jsonData\nfunction parseJson(string){\n    return string === \"\" ? JSON.parse(\"{}\") : JSON.parse(string)\n}\n\nmsg.payload = jsonData\nreturn msg; \n\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -999,7 +999,7 @@
         "type": "function",
         "z": "09012e75c72a4968",
         "name": "AssociatedRoom",
-        "func": "let jsonData = parseJson(msg.payload);\n\njsonData[msg.room_id] = msg.serial\n\n\n//msg.payload = jsonData\nfunction parseJson(string){\n    return string === \"\" ? JSON.parse(\"{}\") : JSON.parse(string)\n}\n\nmsg.payload = jsonData\nreturn msg; \n\n",
+        "func": "let jsonData = parseJson(msg.payload);\n\njsonData[msg.room_id] = msg.serial_id\n\n\n//msg.payload = jsonData\nfunction parseJson(string){\n    return string === \"\" ? JSON.parse(\"{}\") : JSON.parse(string)\n}\n\nmsg.payload = jsonData\nreturn msg; \n\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1037,7 +1037,7 @@
         "type": "file",
         "z": "09012e75c72a4968",
         "name": "write file",
-        "filename": "/data/configFiles/actuator_room_mapping.json",
+        "filename": "/data/configFiles/arduino_room_mapping.json",
         "filenameType": "str",
         "appendNewline": true,
         "createDir": false,
@@ -1213,7 +1213,7 @@
         "type": "file in",
         "z": "09012e75c72a4968",
         "name": "read file",
-        "filename": "/data/configFiles/type0.json",
+        "filename": "/data/configFiles/actuator_room_mapping.json",
         "filenameType": "str",
         "format": "utf8",
         "chunk": false,
@@ -1233,7 +1233,7 @@
         "type": "file in",
         "z": "09012e75c72a4968",
         "name": "read file",
-        "filename": "/data/configFiles/type0.json",
+        "filename": "/data/configFiles/arduino_room_mapping.json",
         "filenameType": "str",
         "format": "utf8",
         "chunk": false,
@@ -1319,5 +1319,63 @@
         "x": 2150,
         "y": 1280,
         "wires": []
+    },
+    {
+        "id": "85e6e0aba603f370",
+        "type": "inject",
+        "z": "09012e75c72a4968",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"type\":9, \"room_id\": \"room1\"}",
+        "payloadType": "json",
+        "x": 90,
+        "y": 260,
+        "wires": [
+            [
+                "ead8458e27835fd5"
+            ]
+        ]
+    },
+    {
+        "id": "8d0bcc7809691b1b",
+        "type": "inject",
+        "z": "09012e75c72a4968",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"type\":8, \"actuator_id\": \"act2\", \"actuator_type\": \"temp_sensor\", \"room_id\": \"room1\"}",
+        "payloadType": "json",
+        "x": 90,
+        "y": 320,
+        "wires": [
+            [
+                "ead8458e27835fd5"
+            ]
+        ]
     }
 ]
