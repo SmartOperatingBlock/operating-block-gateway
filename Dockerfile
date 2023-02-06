@@ -5,8 +5,8 @@ RUN npm install
 #--unsafe-perm --no-update-notifier --no-fund --only=production
 
 # Copy Node-RED project files into place
-COPY settings.js /data/settings.js  
-COPY flows.json /data/flows.json
+COPY data/settings.js /data/settings.js  
+COPY data/flows.json /data/flows.json
 
 #Install additional node
 WORKDIR /usr/src/node-red
