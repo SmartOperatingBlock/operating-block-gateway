@@ -1231,35 +1231,6 @@
         ]
     },
     {
-        "id": "fd738f445c2a696f",
-        "type": "inject",
-        "z": "09012e75c72a4968",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "{\"type\":0, \"room_id\": \"room1\", \"temperature_value\": 23, \"temperature_unit\": \"celsius\"}",
-        "payloadType": "json",
-        "x": 90,
-        "y": 80,
-        "wires": [
-            [
-                "ead8458e27835fd5"
-            ]
-        ]
-    },
-    {
         "id": "6b1290a059fc78a2",
         "type": "serial in",
         "z": "09012e75c72a4968",
@@ -1301,63 +1272,5 @@
         "x": 2070,
         "y": 1280,
         "wires": []
-    },
-    {
-        "id": "85e6e0aba603f370",
-        "type": "inject",
-        "z": "09012e75c72a4968",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "{\"type\":9, \"room_id\": \"room1\"}",
-        "payloadType": "json",
-        "x": 90,
-        "y": 260,
-        "wires": [
-            [
-                "ead8458e27835fd5"
-            ]
-        ]
-    },
-    {
-        "id": "8d0bcc7809691b1b",
-        "type": "inject",
-        "z": "09012e75c72a4968",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "{\"type\":8, \"actuator_id\": \"act2\", \"actuator_type\": \"temp_sensor\", \"room_id\": \"room1\"}",
-        "payloadType": "json",
-        "x": 90,
-        "y": 320,
-        "wires": [
-            [
-                "ead8458e27835fd5"
-            ]
-        ]
     }
 ]
