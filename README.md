@@ -10,14 +10,17 @@ Due to a bug in the node-red-node-serialport library, it is not possible to exec
 To run the microservice use the following docker command: 
 
 ``` bash
+#!/bin/bash
 $ docker rm operating-block-gateway
-$ docker run -d --rm --device /dev/ttyUSB0:/dev/ttyUSB0 -v ./data:/data -p 1880:1880 -e NODE_RED_ENABLE_SAFE_MODE=true ghcr.io/smartoperatingblock/operating-block-gateway:<latestVersion>
-$ docker exec -it operating-block-gateway /bin/sh -c "cd /data; npm rebuild --build-from-source; exit"
+$ docker rm operating-block-gateway-rebuilded
+$ docker run -d --rm --name operating-block-gateway --device /dev/ttyUSB0:/dev/ttyUSB0 -v ./data:/data -p 1880:1880 -e NODE_RED_ENABLE_SAFE_MODE=true nodered/node-red
+$ docker exec operating-block-gateway /bin/sh -c "cd /data; npm install node-red-contrib-https; npm install node-red-node-serialport"
+$ docker exec operating-block-gateway /bin/sh -c "cd /data; npm rebuild --build-from-source"
 $ docker stop operating-block-gateway
-$ docker run -p 1880:1880 -v ./data:/data --device /dev/ttyUSB0:/dev/ttyUSB0 --group-add dialout --env-file .env --name operating-block-gateway ghcr.io/smartoperatingblock/operating-block-gateway:<latestVersion>
+$ docker run -p 1880:1880 -v ./data:/data --device /dev/ttyUSB0:/dev/ttyUSB0 --group-add dialout --env-file .env --name operating-block-gateway-rebuilded nodered/node-red
 ```
 
-In order to simplify we provide a bash script that executes all the instructions above automatically.
+In order to simplify we provide a bash script called bootstrap.sh that executes all the instructions above automatically.
 
 
 
