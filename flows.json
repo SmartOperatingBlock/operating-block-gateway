@@ -1296,7 +1296,7 @@
         "type": "function",
         "z": "09012e75c72a4968",
         "name": "setSerial",
-        "func": "msg.serial_id = \"/dev/tty/USB0\"\nreturn msg;",
+        "func": "msg.serial_id = \"/dev/tty/USB0\"\nmsg.payload = JSON.parse(msg.payload)\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
