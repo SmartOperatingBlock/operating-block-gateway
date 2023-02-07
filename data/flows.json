@@ -662,37 +662,19 @@
         "rules": [
             {
                 "t": "eq",
-                "v": "1",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "2",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "3",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "4",
+                "v": "/dev/ttyUSB0",
                 "vt": "str"
             }
         ],
         "checkall": "true",
         "repair": false,
-        "outputs": 4,
+        "outputs": 1,
         "x": 1890,
         "y": 1300,
         "wires": [
             [
                 "ea1d80c07843fb89"
-            ],
-            [],
-            [],
-            []
+            ]
         ]
     },
     {
