@@ -1036,13 +1036,13 @@
         "type": "function",
         "z": "09012e75c72a4968",
         "name": "setSerialMessage",
-        "func": "msg.payload = {}\nmsg.payload[\"command\"] = msg.type\nmsg.payload[\"room_id\"] = msg.room_id\nmsg.payload[\"status\"] = msg.state\n\nreturn msg;",
+        "func": "msg.state = isNaN(msg.state) ? msg.state : parseInt(msg.state)\nmsg.payload = {}\nmsg.payload[\"command\"] = msg.type\nmsg.payload[\"room_id\"] = msg.room_id\nmsg.payload[\"status\"] = msg.state\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1710,
+        "x": 1690,
         "y": 1300,
         "wires": [
             [
