@@ -114,8 +114,7 @@
         "y": 500,
         "wires": [
             [
-                "c45a10208faeea88",
-                "3b4b32fc0ebfe72e"
+                "c45a10208faeea88"
             ]
         ]
     },
@@ -143,7 +142,7 @@
         "type": "function",
         "z": "09012e75c72a4968",
         "name": "UpdateActuatorState",
-        "func": "",
+        "func": "let jsonData = JSON.parse(msg.payload);\n\nmsg.payload = [\n    {\n        \"op\": \"add\",\n        \"path\": \"/intensity_percentage\",\n        \"value\": msg.intensity_percentage\n    },\n    {\n        \"op\": \"add\",\n        \"path\": \"/power_state\",\n        \"value\": msg.state\n    },\n    {\n        \"op\": \"add\",\n        \"path\": \"/type\",\n        \"value\": jsonData[msg.actuator_id][\"type\"]\n    }\n]\n\nmsg.url = \"https://digital-twin-layer.api.neu.digitaltwins.azure.net/digitaltwins/\" + msg.actuator_id + \"?api-version=2020-10-31\"\nmsg.method = \"patch\"\n\nreturn msg; \n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -153,7 +152,8 @@
         "y": 740,
         "wires": [
             [
-                "c45a10208faeea88"
+                "c45a10208faeea88",
+                "b19dbb8d1bfea2fc"
             ]
         ]
     },
@@ -465,28 +465,6 @@
         ]
     },
     {
-        "id": "6a5968a77bdcb8ec",
-        "type": "https-node",
-        "z": "09012e75c72a4968",
-        "name": "",
-        "method": "use",
-        "ret": "txt",
-        "paytoqs": "ignore",
-        "url": "",
-        "tls": "",
-        "persist": true,
-        "proxy": "",
-        "authType": "",
-        "senderr": false,
-        "x": 2050,
-        "y": 720,
-        "wires": [
-            [
-                "3e879afc64077b51"
-            ]
-        ]
-    },
-    {
         "id": "3a01a886905e5fed",
         "type": "http in",
         "z": "09012e75c72a4968",
@@ -694,28 +672,6 @@
         "wires": [
             [
                 "dd96318fc1b5b6c4"
-            ]
-        ]
-    },
-    {
-        "id": "dd96318fc1b5b6c4",
-        "type": "https-node",
-        "z": "09012e75c72a4968",
-        "name": "getToken",
-        "method": "GET",
-        "ret": "obj",
-        "paytoqs": "body",
-        "url": "",
-        "tls": "",
-        "persist": true,
-        "proxy": "",
-        "authType": "",
-        "senderr": false,
-        "x": 1620,
-        "y": 180,
-        "wires": [
-            [
-                "1453612b8d0a384b"
             ]
         ]
     },
@@ -1116,7 +1072,7 @@
         "type": "file in",
         "z": "09012e75c72a4968",
         "name": "read file",
-        "filename": "/data/configFiles/type0.json",
+        "filename": "/data/configFiles/actuator_room_mapping.json",
         "filenameType": "str",
         "format": "utf8",
         "chunk": false,
@@ -1232,20 +1188,6 @@
         ]
     },
     {
-        "id": "6b1290a059fc78a2",
-        "type": "serial in",
-        "z": "09012e75c72a4968",
-        "name": "",
-        "serial": "94b8abb47e4cb1f2",
-        "x": 110,
-        "y": 180,
-        "wires": [
-            [
-                "ead8458e27835fd5"
-            ]
-        ]
-    },
-    {
         "id": "ead8458e27835fd5",
         "type": "function",
         "z": "09012e75c72a4968",
@@ -1263,16 +1205,6 @@
                 "272e66b82d47e0e4"
             ]
         ]
-    },
-    {
-        "id": "ea1d80c07843fb89",
-        "type": "serial out",
-        "z": "09012e75c72a4968",
-        "name": "",
-        "serial": "94b8abb47e4cb1f2",
-        "x": 2070,
-        "y": 1280,
-        "wires": []
     },
     {
         "id": "6c9f6e80226a5597",
@@ -1302,23 +1234,6 @@
                 "ead8458e27835fd5"
             ]
         ]
-    },
-    {
-        "id": "3b4b32fc0ebfe72e",
-        "type": "debug",
-        "z": "09012e75c72a4968",
-        "name": "debug 1",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1660,
-        "y": 440,
-        "wires": []
     },
     {
         "id": "781486d011dadee8",
@@ -1406,5 +1321,118 @@
                 "ead8458e27835fd5"
             ]
         ]
+    },
+    {
+        "id": "6b1290a059fc78a2",
+        "type": "serial in",
+        "z": "09012e75c72a4968",
+        "name": "",
+        "serial": "94b8abb47e4cb1f2",
+        "x": 130,
+        "y": 180,
+        "wires": [
+            [
+                "ead8458e27835fd5"
+            ]
+        ]
+    },
+    {
+        "id": "ea1d80c07843fb89",
+        "type": "serial out",
+        "z": "09012e75c72a4968",
+        "name": "",
+        "serial": "94b8abb47e4cb1f2",
+        "x": 2090,
+        "y": 1280,
+        "wires": []
+    },
+    {
+        "id": "6a5968a77bdcb8ec",
+        "type": "https-node",
+        "z": "09012e75c72a4968",
+        "name": "",
+        "method": "use",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": true,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 2050,
+        "y": 720,
+        "wires": [
+            [
+                "3e879afc64077b51"
+            ]
+        ]
+    },
+    {
+        "id": "dd96318fc1b5b6c4",
+        "type": "https-node",
+        "z": "09012e75c72a4968",
+        "name": "getToken",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "body",
+        "url": "",
+        "tls": "",
+        "persist": true,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 1620,
+        "y": 180,
+        "wires": [
+            [
+                "1453612b8d0a384b"
+            ]
+        ]
+    },
+    {
+        "id": "105b0c2203081bf6",
+        "type": "inject",
+        "z": "09012e75c72a4968",
+        "name": "type4",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"type\": 4, \"actuator_id\": \"act1\", \"state\" : \"on\", \"intensity_percentage\": 40}",
+        "payloadType": "str",
+        "x": 110,
+        "y": 420,
+        "wires": [
+            [
+                "ead8458e27835fd5"
+            ]
+        ]
+    },
+    {
+        "id": "b19dbb8d1bfea2fc",
+        "type": "debug",
+        "z": "09012e75c72a4968",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1900,
+        "y": 860,
+        "wires": []
     }
 ]
