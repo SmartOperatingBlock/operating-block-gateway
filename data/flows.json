@@ -104,7 +104,7 @@
         "type": "function",
         "z": "09012e75c72a4968",
         "name": "UpdateTemperature",
-        "func": "let jsonData = JSON.parse(msg.payload);\n\nmsg.payload = [\n    {\n        \"op\": \"add\",\n        \"path\": jsonData[\"temperature\"][\"path\"],\n        \"value\": parseInt(msg.temperature_value)\n    }\n]\n\nmsg.payload = {}\n\nmsg.url = \"https://room.api.wcus.digitaltwins.azure.net/digitaltwins/\"+ msg.room_id +\"?api-version=2020-10-31\"\nmsg.method = \"patch\"\n\nreturn msg; \n\n",
+        "func": "let jsonData = JSON.parse(msg.payload);\n\nmsg.payload = [\n    {\n        \"op\": \"add\",\n        \"path\": \"/temperature\",\n        \"value\": parseFloat(msg.temperature_value)\n    }\n]\n\nmsg.url = \"https://digital-twin-layer.api.neu.digitaltwins.azure.net/digitaltwins/\"+ msg.room_id +\"?api-version=2020-10-31\"\nmsg.method = \"patch\"\n\nreturn msg; \n\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -114,7 +114,8 @@
         "y": 500,
         "wires": [
             [
-                "c45a10208faeea88"
+                "c45a10208faeea88",
+                "3b4b32fc0ebfe72e"
             ]
         ]
     },
@@ -123,7 +124,7 @@
         "type": "function",
         "z": "09012e75c72a4968",
         "name": "processSerialData",
-        "func": "msg.room_id = msg.serialData[\"room_id\"]\nmsg.temperature_value = msg.serialData[\"temperature_value\"]\nmsg.temperature_unit = msg.serialData[\"temperature_unit\"]\n\nreturn msg;",
+        "func": "msg.room_id = msg.serialData[\"room_id\"]\nmsg.temperature_value = msg.serialData[\"temperature_value\"]\n//msg.temperature_unit = msg.serialData[\"temperature_unit\"]\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -886,7 +887,7 @@
         "type": "function",
         "z": "09012e75c72a4968",
         "name": "processSerialData",
-        "func": "msg.room_id = msg.serialData[\"room_id\"]\nmsg.luminosity_value = msg.serialData[\"luminosity_value\"]\nmsg.luminosity_unit = msg.serialData[\"luminosity_unit\"]\n\nreturn msg;",
+        "func": "msg.room_id = msg.serialData[\"room_id\"]\nmsg.luminosity_value = msg.serialData[\"luminosity_value\"]\n//msg.luminosity_unit = msg.serialData[\"luminosity_unit\"]\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -924,7 +925,7 @@
         "type": "function",
         "z": "09012e75c72a4968",
         "name": "UpdateHumidity",
-        "func": "\n\n",
+        "func": "let jsonData = JSON.parse(msg.payload);\n\nmsg.payload = [\n    {\n        \"op\": \"add\",\n        \"path\": \"/humidity\",\n        \"value\": parseFloat(msg.humidity_percentage)\n    }\n]\n\nmsg.url = \"https://digital-twin-layer.api.neu.digitaltwins.azure.net/digitaltwins/\" + msg.room_id + \"?api-version=2020-10-31\"\nmsg.method = \"patch\"\n\nreturn msg; \n\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -943,7 +944,7 @@
         "type": "function",
         "z": "09012e75c72a4968",
         "name": "UpdateLuminosity",
-        "func": "\n\n",
+        "func": "let jsonData = JSON.parse(msg.payload);\n\nmsg.payload = [\n    {\n        \"op\": \"add\",\n        \"path\": \"/luminosity\",\n        \"value\": parseFloat(msg.luminosity_value)\n    }\n]\n\nmsg.url = \"https://digital-twin-layer.api.neu.digitaltwins.azure.net/digitaltwins/\" + msg.room_id + \"?api-version=2020-10-31\"\nmsg.method = \"patch\"\n\nreturn msg; \n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -962,7 +963,7 @@
         "type": "function",
         "z": "09012e75c72a4968",
         "name": "UpdatePersonInside",
-        "func": "",
+        "func": "let jsonData = JSON.parse(msg.payload);\n\nmsg.payload = [\n    {\n        \"op\": \"add\",\n        \"path\": \"/presence_inside\",\n        \"value\": msg.person_inside\n    }\n]\n\nmsg.url = \"https://digital-twin-layer.api.neu.digitaltwins.azure.net/digitaltwins/\" + msg.room_id + \"?api-version=2020-10-31\"\nmsg.method = \"patch\"\n\nreturn msg; \n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1255,8 +1256,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 280,
-        "y": 180,
+        "x": 320,
+        "y": 240,
         "wires": [
             [
                 "272e66b82d47e0e4"
@@ -1272,5 +1273,138 @@
         "x": 2070,
         "y": 1280,
         "wires": []
+    },
+    {
+        "id": "6c9f6e80226a5597",
+        "type": "inject",
+        "z": "09012e75c72a4968",
+        "name": "type0",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"type\": 0, \"room_id\": \"room1\", \"temperature_value\": 24, \"temperature_unit\": \"celsius\"}",
+        "payloadType": "str",
+        "x": 110,
+        "y": 260,
+        "wires": [
+            [
+                "ead8458e27835fd5"
+            ]
+        ]
+    },
+    {
+        "id": "3b4b32fc0ebfe72e",
+        "type": "debug",
+        "z": "09012e75c72a4968",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1660,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "781486d011dadee8",
+        "type": "inject",
+        "z": "09012e75c72a4968",
+        "name": "type1",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"type\": 1, \"room_id\": \"room1\", \"humidity_percentage\": 40}",
+        "payloadType": "str",
+        "x": 110,
+        "y": 300,
+        "wires": [
+            [
+                "ead8458e27835fd5"
+            ]
+        ]
+    },
+    {
+        "id": "8c25201c78c9ab3b",
+        "type": "inject",
+        "z": "09012e75c72a4968",
+        "name": "type2",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"type\": 2, \"room_id\": \"room1\", \"luminosity_value\": 1000}",
+        "payloadType": "str",
+        "x": 110,
+        "y": 340,
+        "wires": [
+            [
+                "ead8458e27835fd5"
+            ]
+        ]
+    },
+    {
+        "id": "26ec74664cb5ff41",
+        "type": "inject",
+        "z": "09012e75c72a4968",
+        "name": "type3",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"type\": 3, \"room_id\": \"room1\", \"person_inside\": true}",
+        "payloadType": "str",
+        "x": 110,
+        "y": 380,
+        "wires": [
+            [
+                "ead8458e27835fd5"
+            ]
+        ]
     }
 ]
