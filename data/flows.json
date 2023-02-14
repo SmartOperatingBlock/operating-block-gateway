@@ -152,8 +152,7 @@
         "y": 740,
         "wires": [
             [
-                "c45a10208faeea88",
-                "b19dbb8d1bfea2fc"
+                "c45a10208faeea88"
             ]
         ]
     },
@@ -181,7 +180,7 @@
         "type": "function",
         "z": "09012e75c72a4968",
         "name": "MedicalDeviceTracking",
-        "func": "",
+        "func": "let medicalDeviceModel = \"dtmi:io:github:smartoperatingblock:ImplantableMedicalDevice;1\"\nmsg.url = \"https://digital-twin-layer.api.neu.digitaltwins.azure.net/digitaltwins/\" + msg.device_id + \"?api-version=2023-02-27-preview\"\nmsg.method = \"put\"\n\nmsg.payload = {\n    \"$metadata\": {\n        \"$model\": medicalDeviceModel\n    }, \n    \"type\" : msg.device_type \n}\n\nreturn msg\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -191,7 +190,7 @@
         "y": 860,
         "wires": [
             [
-                "c45a10208faeea88"
+                "1024090145928519"
             ]
         ]
     },
@@ -456,8 +455,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1870,
-        "y": 720,
+        "x": 2910,
+        "y": 700,
         "wires": [
             [
                 "6a5968a77bdcb8ec"
@@ -494,8 +493,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 2220,
-        "y": 720,
+        "x": 3240,
+        "y": 700,
         "wires": []
     },
     {
@@ -512,7 +511,9 @@
         "x": 1560,
         "y": 980,
         "wires": [
-            []
+            [
+                "1a6d9092c128a0bd"
+            ]
         ]
     },
     {
@@ -661,7 +662,7 @@
         "type": "function",
         "z": "09012e75c72a4968",
         "name": "setRequestToGetToken",
-        "func": "msg.headers = {};\nmsg.headers['Content-Type'] = \"application/x-www-form-urlencoded\"\nmsg.payload =  `grant_type = client_credentials &\n                client_id = ` + env.get(\"AZURE_DT_CLIENT_ID\") + ` &\n                client_secret =` + env.get(\"AZURE_DT_CLIENT_SECRET\") + ` &\n                resource = https://digitaltwins.azure.net \n                `\nmsg.url = \"https://login.microsoftonline.com/\"+ env.get(\"AZURE_DT_TENANT_ID\") +\"/oauth2/token\"                \nreturn msg;",
+        "func": "msg.headers = {};\nmsg.headers['Content-Type'] = \"application/x-www-form-urlencoded\"\nmsg.payload =  `grant_type = client_credentials &\n                client_id = ` + env.get(\"AZURE_DT_CLIENT_ID\") + ` &\n                client_secret =` + env.get(\"AZURE_DT_CLIENT_SECRET\") + ` &\n                resource = https://digitaltwins.azure.net\n                `\nmsg.url = \"https://login.microsoftonline.com/\"+ env.get(\"AZURE_DT_TENANT_ID\") +\"/oauth2/token\"                \nreturn msg;\n//https://digitaltwins.azure.net",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1337,16 +1338,6 @@
         ]
     },
     {
-        "id": "ea1d80c07843fb89",
-        "type": "serial out",
-        "z": "09012e75c72a4968",
-        "name": "",
-        "serial": "94b8abb47e4cb1f2",
-        "x": 2090,
-        "y": 1280,
-        "wires": []
-    },
-    {
         "id": "6a5968a77bdcb8ec",
         "type": "https-node",
         "z": "09012e75c72a4968",
@@ -1360,8 +1351,8 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 2050,
-        "y": 720,
+        "x": 3070,
+        "y": 700,
         "wires": [
             [
                 "3e879afc64077b51"
@@ -1420,19 +1411,270 @@
         ]
     },
     {
-        "id": "b19dbb8d1bfea2fc",
-        "type": "debug",
+        "id": "61b317ae6b43b406",
+        "type": "inject",
         "z": "09012e75c72a4968",
-        "name": "debug 1",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1900,
-        "y": 860,
+        "name": "type6",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"type\": 6, \"device_type\": \"0\", \"device_id\" : \"med2\", \"room_id\": \"room1\"}",
+        "payloadType": "str",
+        "x": 110,
+        "y": 460,
+        "wires": [
+            [
+                "ead8458e27835fd5"
+            ]
+        ]
+    },
+    {
+        "id": "1a6d9092c128a0bd",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "createActuatorDT",
+        "func": "let actuatorModel = \"dtmi:io:github:smartoperatingblock:Actuator;1\"\nmsg.url = \"https://digital-twin-layer.api.neu.digitaltwins.azure.net/digitaltwins/\" + msg.actuator_id + \"?api-version=2023-02-27-preview\"\nmsg.method = \"put\"\n\nmsg.payload = {\n    \"$metadata\": {\n        \"$model\": actuatorModel\n    },\n    \"type\": msg.actuator_type\n}\n\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1750,
+        "y": 980,
+        "wires": [
+            [
+                "f1d5bf00146cb950"
+            ]
+        ]
+    },
+    {
+        "id": "c02092f546355c98",
+        "type": "https-node",
+        "z": "09012e75c72a4968",
+        "name": "",
+        "method": "use",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": true,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 2130,
+        "y": 980,
+        "wires": [
+            [
+                "7e2fc28f43937855"
+            ]
+        ]
+    },
+    {
+        "id": "7e2fc28f43937855",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "createRelationShipWithRoom",
+        "func": "let relID = msg.room_id + \"-\" + msg.actuator_id\nmsg.url = \"https://digital-twin-layer.api.neu.digitaltwins.azure.net/digitaltwins/\" + msg.room_id + \"/relationships/\" + relID + \"?api-version=2020-10-31\"\nmsg.method = \"put\"\nmsg.payload = \n    {\n        \"$targetId\": msg.actuator_id,\n        \"$relationshipName\": \"rel_has_actuator\"\n    }\n\n\n\nreturn msg\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2370,
+        "y": 980,
+        "wires": [
+            [
+                "c45a10208faeea88"
+            ]
+        ]
+    },
+    {
+        "id": "c6c4f1b87153a885",
+        "type": "inject",
+        "z": "09012e75c72a4968",
+        "name": "type8",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"type\": 8, \"actuator_type\": \"0\", \"actuator_id\" : \"act111\", \"room_id\": \"room1\"}",
+        "payloadType": "str",
+        "x": 110,
+        "y": 500,
+        "wires": [
+            [
+                "ead8458e27835fd5"
+            ]
+        ]
+    },
+    {
+        "id": "f1d5bf00146cb950",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "add header ",
+        "func": "msg.headers = {};\nmsg.headers['Authorization'] = \"Bearer \" + msg.token\nmsg.headers['Content-Type'] = \"application/json\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1950,
+        "y": 980,
+        "wires": [
+            [
+                "c02092f546355c98"
+            ]
+        ]
+    },
+    {
+        "id": "ea1d80c07843fb89",
+        "type": "serial out",
+        "z": "09012e75c72a4968",
+        "name": "",
+        "serial": "94b8abb47e4cb1f2",
+        "x": 2090,
+        "y": 1280,
         "wires": []
+    },
+    {
+        "id": "1024090145928519",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "add header ",
+        "func": "msg.headers = {};\nmsg.headers['Authorization'] = \"Bearer \" + msg.token\nmsg.headers['Content-Type'] = \"application/json\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1590,
+        "y": 860,
+        "wires": [
+            [
+                "b172127aa6066d80"
+            ]
+        ]
+    },
+    {
+        "id": "b172127aa6066d80",
+        "type": "https-node",
+        "z": "09012e75c72a4968",
+        "name": "",
+        "method": "use",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": true,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 1750,
+        "y": 860,
+        "wires": [
+            [
+                "1005329bc4b3f3df"
+            ]
+        ]
+    },
+    {
+        "id": "745c5f5dda78248a",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "createRelationShipWithRoom",
+        "func": "let process_id = JSON.parse(msg.payload)\nprocess_id = msg.process_id[\"value\"][0][\"$dtId\"]\nlet relID = process_id + \"-\" + msg.device_id\nmsg.url = \"https://digital-twin-layer.api.neu.digitaltwins.azure.net/digitaltwins/\" + process_id + \"/relationships/\" + relID + \"?api-version=2023-02-27-preview\"\nmsg.method = \"put\"\nmsg.payload = {\n    \"$targetId\": msg.device_id,\n    \"$relationshipName\": \"rel_contains_medical_technology\"\n}\n\nreturn msg\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2670,
+        "y": 860,
+        "wires": [
+            [
+                "c45a10208faeea88"
+            ]
+        ]
+    },
+    {
+        "id": "1005329bc4b3f3df",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "requestProcessRelatedToTheRoom",
+        "func": "msg.url = \"https://digital-twin-layer.api.neu.digitaltwins.azure.net/query?api-version=2023-02-27-preview\"\nlet query = \"SELECT TOP (1) Process.$dtId, Process FROM digitaltwins Process JOIN Room RELATED Process.process.rel_is_inside WHERE Room.$dtId = 'room1' AND Process.process_state = '1'\"\nmsg.method = \"post\"\n\nmsg.payload = {\n    \"query\": query\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1990,
+        "y": 860,
+        "wires": [
+            [
+                "3b376db55eb10b0f"
+            ]
+        ]
+    },
+    {
+        "id": "d743a7865378b0dc",
+        "type": "https-node",
+        "z": "09012e75c72a4968",
+        "name": "",
+        "method": "use",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": true,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 2430,
+        "y": 860,
+        "wires": [
+            [
+                "745c5f5dda78248a"
+            ]
+        ]
+    },
+    {
+        "id": "3b376db55eb10b0f",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "add header ",
+        "func": "msg.headers = {};\nmsg.headers['Authorization'] = \"Bearer \" + msg.token\nmsg.headers['Content-Type'] = \"application/json\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2250,
+        "y": 860,
+        "wires": [
+            [
+                "d743a7865378b0dc"
+            ]
+        ]
     }
 ]
