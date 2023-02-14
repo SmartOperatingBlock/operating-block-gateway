@@ -1445,13 +1445,13 @@
         "type": "function",
         "z": "09012e75c72a4968",
         "name": "createRelationshipWithRoom",
-        "func": "let process_id = JSON.parse(msg.payload)\nprocess_id = msg.process_id[\"value\"][0][\"$dtId\"]\nlet relID = process_id + \"-\" + msg.device_id\nmsg.url = \"https://digital-twin-layer.api.neu.digitaltwins.azure.net/digitaltwins/\" + process_id + \"/relationships/\" + relID + \"?api-version=2023-02-27-preview\"\nmsg.method = \"put\"\nmsg.payload = {\n    \"$targetId\": msg.device_id,\n    \"$relationshipName\": \"rel_contains_medical_technology\"\n}\n\nreturn msg\n",
+        "func": "let process_id = msg.payload[\"value\"][0][\"$dtId\"]\nlet relID = process_id + \"-\" + msg.device_id\nmsg.url = \"https://digital-twin-layer.api.neu.digitaltwins.azure.net/digitaltwins/\" + process_id + \"/relationships/\" + relID + \"?api-version=2023-02-27-preview\"\nmsg.method = \"put\"\nmsg.payload = {\n    \"$targetId\": msg.device_id,\n    \"$relationshipName\": \"rel_use\"\n}\n\nreturn msg\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2640,
+        "x": 2690,
         "y": 1000,
         "wires": [
             [
@@ -1464,7 +1464,7 @@
         "type": "function",
         "z": "09012e75c72a4968",
         "name": "requestProcessRelatedToTheRoom",
-        "func": "msg.url = \"https://digital-twin-layer.api.neu.digitaltwins.azure.net/query?api-version=2023-02-27-preview\"\nlet query = \"SELECT TOP (1) SurgicalProcess.$dtId FROM DIGITALTWINS SurgicalProcess JOIN Room RELATED SurgicalProcess.rel_is_inside WHERE Room.$dtId = \" + msg.room_id\nmsg.method = \"post\"\n\nmsg.payload = {\n    \"query\": query\n}\nreturn msg;",
+        "func": "msg.url = \"https://digital-twin-layer.api.neu.digitaltwins.azure.net/query?api-version=2023-02-27-preview\"\nlet query = \"SELECT TOP (1) SurgicalProcess.$dtId FROM DIGITALTWINS SurgicalProcess JOIN Room RELATED SurgicalProcess.rel_is_inside WHERE Room.$dtId = '\" + msg.room_id + \"'\"\nmsg.method = \"post\"\n\nmsg.payload = {\n    \"query\": query\n}\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1484,7 +1484,7 @@
         "z": "09012e75c72a4968",
         "name": "",
         "method": "use",
-        "ret": "txt",
+        "ret": "obj",
         "paytoqs": "ignore",
         "url": "",
         "tls": "",
@@ -1496,7 +1496,8 @@
         "y": 1000,
         "wires": [
             [
-                "745c5f5dda78248a"
+                "745c5f5dda78248a",
+                "c2ebcd9b76d6cc45"
             ]
         ]
     },
@@ -2128,5 +2129,21 @@
                 "20a8eea9561054e5"
             ]
         ]
+    },
+    {
+        "id": "c2ebcd9b76d6cc45",
+        "type": "debug",
+        "z": "09012e75c72a4968",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2800,
+        "y": 940,
+        "wires": []
     }
 ]
