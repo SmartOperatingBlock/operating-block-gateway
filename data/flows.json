@@ -195,25 +195,6 @@
         ]
     },
     {
-        "id": "d1be411bbad65001",
-        "type": "function",
-        "z": "09012e75c72a4968",
-        "name": "PatientOnOperatingTable",
-        "func": "",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1380,
-        "y": 920,
-        "wires": [
-            [
-                "c45a10208faeea88"
-            ]
-        ]
-    },
-    {
         "id": "f749ed1e2e58c229",
         "type": "function",
         "z": "09012e75c72a4968",
@@ -455,8 +436,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2910,
-        "y": 700,
+        "x": 3210,
+        "y": 740,
         "wires": [
             [
                 "6a5968a77bdcb8ec"
@@ -493,8 +474,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 3240,
-        "y": 700,
+        "x": 3560,
+        "y": 740,
         "wires": []
     },
     {
@@ -1144,7 +1125,7 @@
         "y": 920,
         "wires": [
             [
-                "d1be411bbad65001"
+                "61eca1567ddb5e81"
             ]
         ]
     },
@@ -1351,8 +1332,8 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 3070,
-        "y": 700,
+        "x": 3390,
+        "y": 740,
         "wires": [
             [
                 "3e879afc64077b51"
@@ -1472,7 +1453,7 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 2130,
+        "x": 2110,
         "y": 980,
         "wires": [
             [
@@ -1491,7 +1472,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2370,
+        "x": 2910,
         "y": 980,
         "wires": [
             [
@@ -1609,7 +1590,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2670,
+        "x": 2650,
         "y": 860,
         "wires": [
             [
@@ -1622,7 +1603,7 @@
         "type": "function",
         "z": "09012e75c72a4968",
         "name": "requestProcessRelatedToTheRoom",
-        "func": "msg.url = \"https://digital-twin-layer.api.neu.digitaltwins.azure.net/query?api-version=2023-02-27-preview\"\nlet query = \"SELECT TOP (1) Process.$dtId, Process FROM digitaltwins Process JOIN Room RELATED Process.process.rel_is_inside WHERE Room.$dtId = 'room1' AND Process.process_state = '1'\"\nmsg.method = \"post\"\n\nmsg.payload = {\n    \"query\": query\n}\nreturn msg;",
+        "func": "msg.url = \"https://digital-twin-layer.api.neu.digitaltwins.azure.net/query?api-version=2023-02-27-preview\"\nlet query = \"SELECT TOP (1) SurgicalProcess.$dtId FROM DIGITALTWINS SurgicalProcess JOIN Room RELATED SurgicalProcess.rel_is_inside WHERE Room.$dtId = \" + msg.room_id\nmsg.method = \"post\"\n\nmsg.payload = {\n    \"query\": query\n}\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1674,6 +1655,145 @@
         "wires": [
             [
                 "d743a7865378b0dc"
+            ]
+        ]
+    },
+    {
+        "id": "61eca1567ddb5e81",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "requestProcessRelatedToTheRoom",
+        "func": "msg.url = \"https://digital-twin-layer.api.neu.digitaltwins.azure.net/query?api-version=2023-02-27-preview\"\nlet query = \"SELECT TOP (1) SurgicalProcess.$dtId FROM DIGITALTWINS SurgicalProcess JOIN Room RELATED SurgicalProcess.rel_is_inside WHERE Room.$dtId = \" + msg.room_id\nmsg.method = \"post\"\n\nmsg.payload = {\n    \"query\": query\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1430,
+        "y": 920,
+        "wires": [
+            [
+                "780cd80ab50444c2"
+            ]
+        ]
+    },
+    {
+        "id": "780cd80ab50444c2",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "add header ",
+        "func": "msg.headers = {};\nmsg.headers['Authorization'] = \"Bearer \" + msg.token\nmsg.headers['Content-Type'] = \"application/json\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1690,
+        "y": 920,
+        "wires": [
+            [
+                "955129310e7a1ad4"
+            ]
+        ]
+    },
+    {
+        "id": "955129310e7a1ad4",
+        "type": "https-node",
+        "z": "09012e75c72a4968",
+        "name": "",
+        "method": "use",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": true,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 1850,
+        "y": 920,
+        "wires": [
+            [
+                "f51c81bfe7e71efa"
+            ]
+        ]
+    },
+    {
+        "id": "f51c81bfe7e71efa",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "requestPatientRelatedToTheProcess",
+        "func": "let process_id = JSON.parse(msg.payload)\nprocess_id = msg.process_id[\"value\"][0][\"$dtId\"]\n\nmsg.url = \"https://digital-twin-layer.api.neu.digitaltwins.azure.net/query?api-version=2023-02-27-preview\"\nlet query = \"SELECT TOP (1) Patient.$dtId FROM DIGITALTWINS SurgicalProcess JOIN Patient RELATED SurgicalProcess.rel_involve_patient where SurgicalProcess.$dtId =\"+ process_id\nmsg.method = \"post\"\n\nmsg.payload = {\n    \"query\": query\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2110,
+        "y": 920,
+        "wires": [
+            [
+                "dff86deba04d2359"
+            ]
+        ]
+    },
+    {
+        "id": "dff86deba04d2359",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "add header ",
+        "func": "msg.headers = {};\nmsg.headers['Authorization'] = \"Bearer \" + msg.token\nmsg.headers['Content-Type'] = \"application/json\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2370,
+        "y": 920,
+        "wires": [
+            [
+                "e1b522b4e3afd1db"
+            ]
+        ]
+    },
+    {
+        "id": "e1b522b4e3afd1db",
+        "type": "https-node",
+        "z": "09012e75c72a4968",
+        "name": "",
+        "method": "use",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": true,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 2550,
+        "y": 920,
+        "wires": [
+            [
+                "a35b075974d1b012"
+            ]
+        ]
+    },
+    {
+        "id": "a35b075974d1b012",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "setPatientOnOperatingTable",
+        "func": "let patient_id = JSON.parse(msg.payload)\npatient_id = msg.process_id[\"value\"][0][\"$dtId\"]\n\nmsg.payload = [\n    {\n        \"op\": \"add\",\n        \"path\": \"/isOnOperatingTable\",\n        \"value\": true\n    }\n]\n\nmsg.url = \"https://digital-twin-layer.api.neu.digitaltwins.azure.net/digitaltwins/\" + patient_id + \"?api-version=2020-10-31\"\nmsg.method = \"patch\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2760,
+        "y": 920,
+        "wires": [
+            [
+                "c45a10208faeea88"
             ]
         ]
     }
