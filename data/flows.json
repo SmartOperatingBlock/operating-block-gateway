@@ -111,7 +111,7 @@
         "finalize": "",
         "libs": [],
         "x": 1380,
-        "y": 500,
+        "y": 460,
         "wires": [
             [
                 "c45a10208faeea88"
@@ -130,7 +130,7 @@
         "finalize": "",
         "libs": [],
         "x": 930,
-        "y": 500,
+        "y": 460,
         "wires": [
             [
                 "af11a3caafbb5fa8"
@@ -149,26 +149,7 @@
         "finalize": "",
         "libs": [],
         "x": 1380,
-        "y": 740,
-        "wires": [
-            [
-                "c45a10208faeea88"
-            ]
-        ]
-    },
-    {
-        "id": "38965161414b027a",
-        "type": "function",
-        "z": "09012e75c72a4968",
-        "name": "PersonEnterExit",
-        "func": "\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1360,
-        "y": 800,
+        "y": 700,
         "wires": [
             [
                 "c45a10208faeea88"
@@ -186,8 +167,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1380,
-        "y": 860,
+        "x": 1370,
+        "y": 1000,
         "wires": [
             [
                 "1024090145928519"
@@ -205,8 +186,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1360,
-        "y": 980,
+        "x": 1350,
+        "y": 1120,
         "wires": [
             [
                 "5c6d578149de144a"
@@ -225,7 +206,7 @@
         "finalize": "",
         "libs": [],
         "x": 930,
-        "y": 740,
+        "y": 700,
         "wires": [
             [
                 "635a32e66dd92586"
@@ -244,30 +225,10 @@
         "finalize": "",
         "libs": [],
         "x": 930,
-        "y": 800,
+        "y": 820,
         "wires": [
             [
-                "145386797b8afe53"
-            ]
-        ]
-    },
-    {
-        "id": "af11a3caafbb5fa8",
-        "type": "file in",
-        "z": "09012e75c72a4968",
-        "name": "read file",
-        "filename": "/data/configFiles/type0.json",
-        "filenameType": "str",
-        "format": "utf8",
-        "chunk": false,
-        "sendError": false,
-        "encoding": "utf8",
-        "allProps": false,
-        "x": 1160,
-        "y": 500,
-        "wires": [
-            [
-                "32174867b86c7b03"
+                "7810c6d0751cfd37"
             ]
         ]
     },
@@ -379,8 +340,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 930,
-        "y": 860,
+        "x": 920,
+        "y": 1000,
         "wires": [
             [
                 "cb314a12c20513b3"
@@ -398,8 +359,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 930,
-        "y": 920,
+        "x": 920,
+        "y": 1060,
         "wires": [
             [
                 "3dc151189b79fc01"
@@ -417,8 +378,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 930,
-        "y": 980,
+        "x": 920,
+        "y": 1120,
         "wires": [
             [
                 "f6e56c9200cdd690"
@@ -489,8 +450,8 @@
         "createDir": false,
         "overwriteFile": "true",
         "encoding": "utf8",
-        "x": 1560,
-        "y": 980,
+        "x": 1550,
+        "y": 1120,
         "wires": [
             [
                 "1a6d9092c128a0bd"
@@ -662,7 +623,7 @@
         "type": "function",
         "z": "09012e75c72a4968",
         "name": "saveToken",
-        "func": "msg.token = msg.payload[\"access_token\"]\nmsg.expires_on = msg.payload[\"expiresOn\"]\nmsg.payload = {}\nmsg.payload[\"expiresOn\"] = msg.expires_on\nmsg.payload[\"token\"] = msg.token\n\nreturn msg;",
+        "func": "msg.token = msg.payload[\"access_token\"]\nmsg.expires_on = msg.payload[\"expires_on\"]\nmsg.payload = {}\nmsg.payload[\"expires_on\"] = msg.expires_on\nmsg.payload[\"token\"] = msg.token\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -681,7 +642,7 @@
         "type": "function",
         "z": "09012e75c72a4968",
         "name": "checkIfTokenExpired",
-        "func": "msg.payload = parseJson(msg.payload);\n\nif(msg.payload == \"\"){\n    msg.tokenExpired = true\n}else{\n    msg.tokenExpires_on = msg.payload[\"expiresOn\"]\n    let fiveMinutesInUnixEpoch = 300\n    msg.tokenExpired = (msg.tokenExpires_on - fiveMinutesInUnixEpoch) < Math.floor(Date.now() / 1000)\n}\n\nfunction parseJson(string) {\n    return string === \"\" ? \"\" : JSON.parse(string)\n}\nreturn msg;\n\n",
+        "func": "msg.payload = parseJson(msg.payload);\n\nif(msg.payload == \"\"){\n    msg.tokenExpired = true\n}else{\n    msg.tokenExpires_on = msg.payload[\"expires_on\"]\n    let fiveMinutesInUnixEpoch = 300\n    msg.tokenExpired = (msg.tokenExpires_on - fiveMinutesInUnixEpoch) < Math.floor(Date.now() / 1000)\n}\n\nfunction parseJson(string) {\n    return string === \"\" ? \"\" : JSON.parse(string)\n}\nreturn msg;\n\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -713,7 +674,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 1190,
+        "x": 1200,
         "y": 240,
         "wires": [
             [
@@ -813,7 +774,7 @@
         "finalize": "",
         "libs": [],
         "x": 930,
-        "y": 560,
+        "y": 520,
         "wires": [
             [
                 "3af5bf281111cdf5"
@@ -832,7 +793,7 @@
         "finalize": "",
         "libs": [],
         "x": 930,
-        "y": 620,
+        "y": 580,
         "wires": [
             [
                 "eff2c757e27ebc08"
@@ -851,7 +812,7 @@
         "finalize": "",
         "libs": [],
         "x": 930,
-        "y": 680,
+        "y": 640,
         "wires": [
             [
                 "e944970a233c812f"
@@ -870,7 +831,7 @@
         "finalize": "",
         "libs": [],
         "x": 1360,
-        "y": 560,
+        "y": 520,
         "wires": [
             [
                 "c45a10208faeea88"
@@ -889,7 +850,7 @@
         "finalize": "",
         "libs": [],
         "x": 1370,
-        "y": 620,
+        "y": 580,
         "wires": [
             [
                 "c45a10208faeea88"
@@ -908,7 +869,7 @@
         "finalize": "",
         "libs": [],
         "x": 1380,
-        "y": 680,
+        "y": 640,
         "wires": [
             [
                 "c45a10208faeea88"
@@ -926,8 +887,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1370,
-        "y": 1040,
+        "x": 1360,
+        "y": 1180,
         "wires": [
             [
                 "4a089b6cc4d44d96"
@@ -945,8 +906,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 930,
-        "y": 1040,
+        "x": 920,
+        "y": 1180,
         "wires": [
             [
                 "3dd49201b59cb7f9"
@@ -964,8 +925,8 @@
         "createDir": false,
         "overwriteFile": "true",
         "encoding": "utf8",
-        "x": 1570,
-        "y": 1040,
+        "x": 1560,
+        "y": 1180,
         "wires": [
             []
         ]
@@ -990,106 +951,6 @@
         ]
     },
     {
-        "id": "3af5bf281111cdf5",
-        "type": "file in",
-        "z": "09012e75c72a4968",
-        "name": "read file",
-        "filename": "/data/configFiles/type0.json",
-        "filenameType": "str",
-        "format": "utf8",
-        "chunk": false,
-        "sendError": false,
-        "encoding": "utf8",
-        "allProps": false,
-        "x": 1160,
-        "y": 560,
-        "wires": [
-            [
-                "931fbc85cf48c3ad"
-            ]
-        ]
-    },
-    {
-        "id": "eff2c757e27ebc08",
-        "type": "file in",
-        "z": "09012e75c72a4968",
-        "name": "read file",
-        "filename": "/data/configFiles/type0.json",
-        "filenameType": "str",
-        "format": "utf8",
-        "chunk": false,
-        "sendError": false,
-        "encoding": "utf8",
-        "allProps": false,
-        "x": 1160,
-        "y": 620,
-        "wires": [
-            [
-                "c1a003d2e63c8fc7"
-            ]
-        ]
-    },
-    {
-        "id": "e944970a233c812f",
-        "type": "file in",
-        "z": "09012e75c72a4968",
-        "name": "read file",
-        "filename": "/data/configFiles/type0.json",
-        "filenameType": "str",
-        "format": "utf8",
-        "chunk": false,
-        "sendError": false,
-        "encoding": "utf8",
-        "allProps": false,
-        "x": 1160,
-        "y": 680,
-        "wires": [
-            [
-                "f495c7f7c9e65097"
-            ]
-        ]
-    },
-    {
-        "id": "635a32e66dd92586",
-        "type": "file in",
-        "z": "09012e75c72a4968",
-        "name": "read file",
-        "filename": "/data/configFiles/actuator_room_mapping.json",
-        "filenameType": "str",
-        "format": "utf8",
-        "chunk": false,
-        "sendError": false,
-        "encoding": "utf8",
-        "allProps": false,
-        "x": 1160,
-        "y": 740,
-        "wires": [
-            [
-                "c4db83d867cd1492"
-            ]
-        ]
-    },
-    {
-        "id": "145386797b8afe53",
-        "type": "file in",
-        "z": "09012e75c72a4968",
-        "name": "read file",
-        "filename": "/data/configFiles/type0.json",
-        "filenameType": "str",
-        "format": "utf8",
-        "chunk": false,
-        "sendError": false,
-        "encoding": "utf8",
-        "allProps": false,
-        "x": 1160,
-        "y": 800,
-        "wires": [
-            [
-                "38965161414b027a"
-            ]
-        ]
-    },
-    {
         "id": "cb314a12c20513b3",
         "type": "file in",
         "z": "09012e75c72a4968",
@@ -1101,8 +962,8 @@
         "sendError": false,
         "encoding": "utf8",
         "allProps": false,
-        "x": 1160,
-        "y": 860,
+        "x": 1150,
+        "y": 1000,
         "wires": [
             [
                 "dcc8abdf633f1c30"
@@ -1121,8 +982,8 @@
         "sendError": false,
         "encoding": "utf8",
         "allProps": false,
-        "x": 1160,
-        "y": 920,
+        "x": 1150,
+        "y": 1060,
         "wires": [
             [
                 "61eca1567ddb5e81"
@@ -1141,8 +1002,8 @@
         "sendError": false,
         "encoding": "utf8",
         "allProps": false,
-        "x": 1160,
-        "y": 980,
+        "x": 1150,
+        "y": 1120,
         "wires": [
             [
                 "f749ed1e2e58c229"
@@ -1161,8 +1022,8 @@
         "sendError": false,
         "encoding": "utf8",
         "allProps": false,
-        "x": 1160,
-        "y": 1040,
+        "x": 1150,
+        "y": 1180,
         "wires": [
             [
                 "b8465449f8f024c3"
@@ -1180,7 +1041,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 320,
+        "x": 420,
         "y": 240,
         "wires": [
             [
@@ -1413,7 +1274,7 @@
         "payload": "{\"type\": 6, \"device_type\": \"0\", \"device_id\" : \"med2\", \"room_id\": \"room1\"}",
         "payloadType": "str",
         "x": 110,
-        "y": 460,
+        "y": 500,
         "wires": [
             [
                 "ead8458e27835fd5"
@@ -1431,8 +1292,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1750,
-        "y": 980,
+        "x": 1740,
+        "y": 1120,
         "wires": [
             [
                 "f1d5bf00146cb950"
@@ -1453,8 +1314,8 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 2110,
-        "y": 980,
+        "x": 2100,
+        "y": 1120,
         "wires": [
             [
                 "7e2fc28f43937855"
@@ -1465,15 +1326,15 @@
         "id": "7e2fc28f43937855",
         "type": "function",
         "z": "09012e75c72a4968",
-        "name": "createRelationShipWithRoom",
+        "name": "createRelationshipWithRoom",
         "func": "let relID = msg.room_id + \"-\" + msg.actuator_id\nmsg.url = \"https://digital-twin-layer.api.neu.digitaltwins.azure.net/digitaltwins/\" + msg.room_id + \"/relationships/\" + relID + \"?api-version=2020-10-31\"\nmsg.method = \"put\"\nmsg.payload = \n    {\n        \"$targetId\": msg.actuator_id,\n        \"$relationshipName\": \"rel_has_actuator\"\n    }\n\n\n\nreturn msg\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2910,
-        "y": 980,
+        "x": 2750,
+        "y": 1120,
         "wires": [
             [
                 "c45a10208faeea88"
@@ -1502,7 +1363,7 @@
         "payload": "{\"type\": 8, \"actuator_type\": \"0\", \"actuator_id\" : \"act111\", \"room_id\": \"room1\"}",
         "payloadType": "str",
         "x": 110,
-        "y": 500,
+        "y": 580,
         "wires": [
             [
                 "ead8458e27835fd5"
@@ -1520,8 +1381,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1950,
-        "y": 980,
+        "x": 1940,
+        "y": 1120,
         "wires": [
             [
                 "c02092f546355c98"
@@ -1535,7 +1396,7 @@
         "name": "",
         "serial": "94b8abb47e4cb1f2",
         "x": 2090,
-        "y": 1280,
+        "y": 1300,
         "wires": []
     },
     {
@@ -1549,8 +1410,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1590,
-        "y": 860,
+        "x": 1580,
+        "y": 1000,
         "wires": [
             [
                 "b172127aa6066d80"
@@ -1571,8 +1432,8 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 1750,
-        "y": 860,
+        "x": 1740,
+        "y": 1000,
         "wires": [
             [
                 "1005329bc4b3f3df"
@@ -1583,15 +1444,15 @@
         "id": "745c5f5dda78248a",
         "type": "function",
         "z": "09012e75c72a4968",
-        "name": "createRelationShipWithRoom",
+        "name": "createRelationshipWithRoom",
         "func": "let process_id = JSON.parse(msg.payload)\nprocess_id = msg.process_id[\"value\"][0][\"$dtId\"]\nlet relID = process_id + \"-\" + msg.device_id\nmsg.url = \"https://digital-twin-layer.api.neu.digitaltwins.azure.net/digitaltwins/\" + process_id + \"/relationships/\" + relID + \"?api-version=2023-02-27-preview\"\nmsg.method = \"put\"\nmsg.payload = {\n    \"$targetId\": msg.device_id,\n    \"$relationshipName\": \"rel_contains_medical_technology\"\n}\n\nreturn msg\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2650,
-        "y": 860,
+        "x": 2640,
+        "y": 1000,
         "wires": [
             [
                 "c45a10208faeea88"
@@ -1609,8 +1470,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1990,
-        "y": 860,
+        "x": 1980,
+        "y": 1000,
         "wires": [
             [
                 "3b376db55eb10b0f"
@@ -1631,8 +1492,8 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 2430,
-        "y": 860,
+        "x": 2420,
+        "y": 1000,
         "wires": [
             [
                 "745c5f5dda78248a"
@@ -1650,8 +1511,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2250,
-        "y": 860,
+        "x": 2240,
+        "y": 1000,
         "wires": [
             [
                 "d743a7865378b0dc"
@@ -1669,8 +1530,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1430,
-        "y": 920,
+        "x": 1420,
+        "y": 1060,
         "wires": [
             [
                 "780cd80ab50444c2"
@@ -1688,8 +1549,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1690,
-        "y": 920,
+        "x": 1680,
+        "y": 1060,
         "wires": [
             [
                 "955129310e7a1ad4"
@@ -1710,8 +1571,8 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 1850,
-        "y": 920,
+        "x": 1840,
+        "y": 1060,
         "wires": [
             [
                 "f51c81bfe7e71efa"
@@ -1729,8 +1590,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2110,
-        "y": 920,
+        "x": 2100,
+        "y": 1060,
         "wires": [
             [
                 "dff86deba04d2359"
@@ -1748,8 +1609,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2370,
-        "y": 920,
+        "x": 2360,
+        "y": 1060,
         "wires": [
             [
                 "e1b522b4e3afd1db"
@@ -1770,8 +1631,8 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 2550,
-        "y": 920,
+        "x": 2540,
+        "y": 1060,
         "wires": [
             [
                 "a35b075974d1b012"
@@ -1783,17 +1644,488 @@
         "type": "function",
         "z": "09012e75c72a4968",
         "name": "setPatientOnOperatingTable",
-        "func": "let patient_id = JSON.parse(msg.payload)\npatient_id = msg.process_id[\"value\"][0][\"$dtId\"]\n\nmsg.payload = [\n    {\n        \"op\": \"add\",\n        \"path\": \"/isOnOperatingTable\",\n        \"value\": true\n    }\n]\n\nmsg.url = \"https://digital-twin-layer.api.neu.digitaltwins.azure.net/digitaltwins/\" + patient_id + \"?api-version=2020-10-31\"\nmsg.method = \"patch\"\nreturn msg;",
+        "func": "let patient_id = JSON.parse(msg.payload)\npatient_id = msg.process_id[\"value\"][0][\"$dtId\"]\n\nmsg.payload = [\n    {\n        \"op\": \"add\",\n        \"path\": \"/is_on_operating_table\",\n        \"value\": true\n    }\n]\n\nmsg.url = \"https://digital-twin-layer.api.neu.digitaltwins.azure.net/digitaltwins/\" + patient_id + \"?api-version=2020-10-31\"\nmsg.method = \"patch\"\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2760,
-        "y": 920,
+        "x": 2750,
+        "y": 1060,
         "wires": [
             [
                 "c45a10208faeea88"
+            ]
+        ]
+    },
+    {
+        "id": "4702432e7293a098",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "deleteHealtProfessionalRelationWIthRoom",
+        "func": "let room_id = msg.payload[\"value\"][0][\"$targetId\"]\nlet relID = room_id + \"-\" + msg.person_id\nmsg.url = \"https://digital-twin-layer.api.neu.digitaltwins.azure.net/digitaltwins/\" + msg.person_id + \"/relationships/\" + relID + \"?api-version=2023-02-27-preview\"\nmsg.method = \"delete\"\n\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1990,
+        "y": 760,
+        "wires": [
+            [
+                "c45a10208faeea88"
+            ]
+        ]
+    },
+    {
+        "id": "208b6e44f1f2d442",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "createPersonRelationWithRoom",
+        "func": "let relID = msg.room_id + \"-\" + msg.person_id\nmsg.url = \"https://digital-twin-layer.api.neu.digitaltwins.azure.net/digitaltwins/\" + msg.person_id + \"/relationships/\" + relID + \"?api-version=2023-02-27-preview\"\nmsg.method = \"put\"\nmsg.payload = {\n    \"$targetId\": msg.room_id,\n    \"$relationshipName\": \"rel_is_inside\"\n}\n\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2870,
+        "y": 780,
+        "wires": [
+            [
+                "c45a10208faeea88"
+            ]
+        ]
+    },
+    {
+        "id": "fefe9785d23b240b",
+        "type": "inject",
+        "z": "09012e75c72a4968",
+        "name": "type5",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"type\": 5, \"person_id\": \"health1\", \"person_role\": \"health\", \"room_id\": null} ",
+        "payloadType": "str",
+        "x": 110,
+        "y": 460,
+        "wires": [
+            [
+                "ead8458e27835fd5"
+            ]
+        ]
+    },
+    {
+        "id": "5cba3fef88d0f3ca",
+        "type": "inject",
+        "z": "09012e75c72a4968",
+        "name": "type7",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"type\": 7, \"room_id\": \"room1\"} ",
+        "payloadType": "str",
+        "x": 110,
+        "y": 540,
+        "wires": [
+            [
+                "ead8458e27835fd5"
+            ]
+        ]
+    },
+    {
+        "id": "af11a3caafbb5fa8",
+        "type": "file in",
+        "z": "09012e75c72a4968",
+        "name": "read file",
+        "filename": "/data/configFiles/type0.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "utf8",
+        "allProps": false,
+        "x": 1160,
+        "y": 460,
+        "wires": [
+            [
+                "32174867b86c7b03"
+            ]
+        ]
+    },
+    {
+        "id": "3af5bf281111cdf5",
+        "type": "file in",
+        "z": "09012e75c72a4968",
+        "name": "read file",
+        "filename": "/data/configFiles/type0.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "utf8",
+        "allProps": false,
+        "x": 1160,
+        "y": 520,
+        "wires": [
+            [
+                "931fbc85cf48c3ad"
+            ]
+        ]
+    },
+    {
+        "id": "eff2c757e27ebc08",
+        "type": "file in",
+        "z": "09012e75c72a4968",
+        "name": "read file",
+        "filename": "/data/configFiles/type0.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "utf8",
+        "allProps": false,
+        "x": 1160,
+        "y": 580,
+        "wires": [
+            [
+                "c1a003d2e63c8fc7"
+            ]
+        ]
+    },
+    {
+        "id": "e944970a233c812f",
+        "type": "file in",
+        "z": "09012e75c72a4968",
+        "name": "read file",
+        "filename": "/data/configFiles/type0.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "utf8",
+        "allProps": false,
+        "x": 1160,
+        "y": 640,
+        "wires": [
+            [
+                "f495c7f7c9e65097"
+            ]
+        ]
+    },
+    {
+        "id": "635a32e66dd92586",
+        "type": "file in",
+        "z": "09012e75c72a4968",
+        "name": "read file",
+        "filename": "/data/configFiles/actuator_room_mapping.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "utf8",
+        "allProps": false,
+        "x": 1160,
+        "y": 700,
+        "wires": [
+            [
+                "c4db83d867cd1492"
+            ]
+        ]
+    },
+    {
+        "id": "fec5274b054d2943",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "add header ",
+        "func": "msg.headers = {};\nmsg.headers['Authorization'] = \"Bearer \" + msg.token\nmsg.headers['Content-Type'] = \"application/json\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2450,
+        "y": 940,
+        "wires": [
+            [
+                "c85da5a700a576e0"
+            ]
+        ]
+    },
+    {
+        "id": "c85da5a700a576e0",
+        "type": "https-node",
+        "z": "09012e75c72a4968",
+        "name": "",
+        "method": "use",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": true,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 2610,
+        "y": 940,
+        "wires": [
+            [
+                "208b6e44f1f2d442"
+            ]
+        ]
+    },
+    {
+        "id": "d7aeec33f6a4d5e0",
+        "type": "switch",
+        "z": "09012e75c72a4968",
+        "name": "roleSwitch",
+        "property": "role",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "health",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "patient",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1310,
+        "y": 880,
+        "wires": [
+            [
+                "208b6e44f1f2d442"
+            ],
+            [
+                "d119d9c78f4ac103"
+            ]
+        ]
+    },
+    {
+        "id": "c0697d7b4441af53",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "createPatientDT",
+        "func": "let patientModel = \"dtmi:io:github:smartoperatingblock:Patient;1\"\nmsg.url = \"https://digital-twin-layer.api.neu.digitaltwins.azure.net/digitaltwins/\" + msg.person_id + \"?api-version=2023-02-27-preview\"\nmsg.method = \"put\"\n\nmsg.payload = {\n    \"$metadata\": {\n        \"$model\": patientModel\n    },\n    \"is_on_operating_table\": false\n}\n\nreturn msg\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2280,
+        "y": 940,
+        "wires": [
+            [
+                "fec5274b054d2943"
+            ]
+        ]
+    },
+    {
+        "id": "cda971bcd4ca8cc8",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "add header ",
+        "func": "msg.headers = {};\nmsg.headers['Authorization'] = \"Bearer \" + msg.token\nmsg.headers['Content-Type'] = \"application/json\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1730,
+        "y": 920,
+        "wires": [
+            [
+                "52b89481233ff854"
+            ]
+        ]
+    },
+    {
+        "id": "52b89481233ff854",
+        "type": "https-node",
+        "z": "09012e75c72a4968",
+        "name": "",
+        "method": "use",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": true,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 1890,
+        "y": 920,
+        "wires": [
+            [
+                "7fce2ecffbba5be0"
+            ]
+        ]
+    },
+    {
+        "id": "d119d9c78f4ac103",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "checkIfPatientDTExitsts",
+        "func": "msg.url = \"https://digital-twin-layer.api.neu.digitaltwins.azure.net/digitaltwins/\" + msg.person_id + \"?api-version=2023-02-27-preview\"\nmsg.method = \"get\"\n\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1530,
+        "y": 920,
+        "wires": [
+            [
+                "cda971bcd4ca8cc8"
+            ]
+        ]
+    },
+    {
+        "id": "7fce2ecffbba5be0",
+        "type": "switch",
+        "z": "09012e75c72a4968",
+        "name": "StatusCodeSwitch",
+        "property": "statusCode",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "200",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "404",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 2070,
+        "y": 920,
+        "wires": [
+            [
+                "208b6e44f1f2d442"
+            ],
+            [
+                "c0697d7b4441af53"
+            ]
+        ]
+    },
+    {
+        "id": "7810c6d0751cfd37",
+        "type": "switch",
+        "z": "09012e75c72a4968",
+        "name": "enterExitSwitch",
+        "property": "room_id",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "null"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1140,
+        "y": 820,
+        "wires": [
+            [
+                "b7d27c682271db4a"
+            ],
+            [
+                "d7aeec33f6a4d5e0"
+            ]
+        ]
+    },
+    {
+        "id": "20a8eea9561054e5",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "add header ",
+        "func": "msg.headers = {};\nmsg.headers['Authorization'] = \"Bearer \" + msg.token\nmsg.headers['Content-Type'] = \"application/json\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1530,
+        "y": 760,
+        "wires": [
+            [
+                "302d634ed9fe8047"
+            ]
+        ]
+    },
+    {
+        "id": "302d634ed9fe8047",
+        "type": "https-node",
+        "z": "09012e75c72a4968",
+        "name": "",
+        "method": "use",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": true,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 1710,
+        "y": 760,
+        "wires": [
+            [
+                "4702432e7293a098"
+            ]
+        ]
+    },
+    {
+        "id": "b7d27c682271db4a",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "getCurrentRoom",
+        "func": "let relName = \"rel_is_inside\"\nmsg.url = \"https://digital-twin-layer.api.neu.digitaltwins.azure.net/digitaltwins/\" + msg.person_id + \"/relationships/?relationshipName=\" + relName + \"&api-version=2023-02-27-preview\"\nmsg.method = \"get\"\n\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1330,
+        "y": 760,
+        "wires": [
+            [
+                "20a8eea9561054e5"
             ]
         ]
     }
