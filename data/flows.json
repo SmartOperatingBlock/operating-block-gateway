@@ -122,14 +122,14 @@
         "id": "17a8a64fa23751ed",
         "type": "function",
         "z": "09012e75c72a4968",
-        "name": "processSerialData",
+        "name": "processTemperatureData",
         "func": "msg.room_id = msg.serialData[\"room_id\"]\nmsg.temperature_value = msg.serialData[\"temperature_value\"]\n//msg.temperature_unit = msg.serialData[\"temperature_unit\"]\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 930,
+        "x": 950,
         "y": 460,
         "wires": [
             [
@@ -167,7 +167,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1270,
+        "x": 1250,
         "y": 1000,
         "wires": [
             [
@@ -198,14 +198,14 @@
         "id": "976a5466bc4b4345",
         "type": "function",
         "z": "09012e75c72a4968",
-        "name": "processSerialData",
+        "name": "processAcutatorData",
         "func": "msg.actuator_id = msg.serialData[\"actuator_id\"]\nmsg.state = msg.serialData[\"state\"]\nmsg.intensity_percentage = msg.serialData[\"intensity_percentage\"]\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 930,
+        "x": 940,
         "y": 700,
         "wires": [
             [
@@ -217,14 +217,14 @@
         "id": "5224a2d0c5f5e2ff",
         "type": "function",
         "z": "09012e75c72a4968",
-        "name": "processSerialData",
+        "name": "processPersonEnterInRoom",
         "func": "msg.person_id = msg.serialData[\"person_id\"]\nmsg.room_id = msg.serialData[\"room_id\"]\nmsg.role = msg.serialData[\"person_role\"]\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 930,
+        "x": 920,
         "y": 820,
         "wires": [
             [
@@ -333,14 +333,14 @@
         "id": "269af3b43e760d2b",
         "type": "function",
         "z": "09012e75c72a4968",
-        "name": "processSerialData",
+        "name": "processMedicalDeviceTracking",
         "func": "msg.device_type = msg.serialData[\"device_type\"]\nmsg.device_id = msg.serialData[\"device_id\"]\nmsg.room_id = msg.serialData[\"room_id\"]\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 920,
+        "x": 960,
         "y": 1000,
         "wires": [
             [
@@ -352,14 +352,14 @@
         "id": "637a5d6856e31424",
         "type": "function",
         "z": "09012e75c72a4968",
-        "name": "processSerialData",
+        "name": "processPatientOnOperatingRoom",
         "func": "msg.room_id = msg.serialData[\"room_id\"]\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 920,
+        "x": 970,
         "y": 1060,
         "wires": [
             [
@@ -371,14 +371,14 @@
         "id": "37741262158114fd",
         "type": "function",
         "z": "09012e75c72a4968",
-        "name": "processSerialData",
+        "name": "processAvailableActuator",
         "func": "msg.actuator_id = msg.serialData[\"actuator_id\"]\nmsg.actuator_type = msg.serialData[\"actuator_type\"]\nmsg.room_id = msg.serialData[\"room_id\"]\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 920,
+        "x": 940,
         "y": 1120,
         "wires": [
             [
@@ -766,14 +766,14 @@
         "id": "e0959707dc172828",
         "type": "function",
         "z": "09012e75c72a4968",
-        "name": "processSerialData",
+        "name": "processHumidityData",
         "func": "msg.room_id = msg.serialData[\"room_id\"]\nmsg.humidity_percentage = msg.serialData[\"humidity_percentage\"]\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 930,
+        "x": 940,
         "y": 520,
         "wires": [
             [
@@ -785,14 +785,14 @@
         "id": "2a72d09d78bb7407",
         "type": "function",
         "z": "09012e75c72a4968",
-        "name": "processSerialData",
+        "name": "processLuminosityData",
         "func": "msg.room_id = msg.serialData[\"room_id\"]\nmsg.luminosity_value = msg.serialData[\"luminosity_value\"]\n//msg.luminosity_unit = msg.serialData[\"luminosity_unit\"]\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 930,
+        "x": 950,
         "y": 580,
         "wires": [
             [
@@ -804,14 +804,14 @@
         "id": "5a61a2afa4a38b4a",
         "type": "function",
         "z": "09012e75c72a4968",
-        "name": "processSerialData",
+        "name": "processPersonInside",
         "func": "msg.room_id = msg.serialData[\"room_id\"]\nmsg.person_inside = msg.serialData[\"person_inside\"]\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 930,
+        "x": 940,
         "y": 640,
         "wires": [
             [
@@ -887,7 +887,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1360,
+        "x": 1490,
         "y": 1180,
         "wires": [
             [
@@ -899,14 +899,14 @@
         "id": "5f4a2d6877405aa5",
         "type": "function",
         "z": "09012e75c72a4968",
-        "name": "processSerialData",
+        "name": "processMappingBetweenSerialAndArduino",
         "func": "msg.room_id = msg.serialData[\"room_id\"]\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 920,
+        "x": 1010,
         "y": 1180,
         "wires": [
             [
@@ -925,7 +925,7 @@
         "createDir": false,
         "overwriteFile": "true",
         "encoding": "utf8",
-        "x": 1560,
+        "x": 1680,
         "y": 1180,
         "wires": [
             []
@@ -982,7 +982,7 @@
         "sendError": false,
         "encoding": "utf8",
         "allProps": false,
-        "x": 1150,
+        "x": 1280,
         "y": 1180,
         "wires": [
             [
@@ -1293,7 +1293,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2750,
+        "x": 2610,
         "y": 1120,
         "wires": [
             [
@@ -1370,7 +1370,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1580,
+        "x": 1470,
         "y": 1000,
         "wires": [
             [
@@ -1392,7 +1392,7 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 1740,
+        "x": 1630,
         "y": 1000,
         "wires": [
             [
@@ -1411,7 +1411,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2690,
+        "x": 2570,
         "y": 1000,
         "wires": [
             [
@@ -1430,7 +1430,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1980,
+        "x": 1890,
         "y": 1000,
         "wires": [
             [
@@ -1452,7 +1452,7 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 2420,
+        "x": 2330,
         "y": 1000,
         "wires": [
             [
@@ -1471,7 +1471,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2240,
+        "x": 2150,
         "y": 1000,
         "wires": [
             [
@@ -1509,7 +1509,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1680,
+        "x": 1550,
         "y": 1060,
         "wires": [
             [
@@ -1531,7 +1531,7 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 1840,
+        "x": 1710,
         "y": 1060,
         "wires": [
             [
@@ -1550,7 +1550,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2100,
+        "x": 1970,
         "y": 1060,
         "wires": [
             [
@@ -1569,7 +1569,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2360,
+        "x": 2230,
         "y": 1060,
         "wires": [
             [
@@ -1591,7 +1591,7 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 2540,
+        "x": 2410,
         "y": 1060,
         "wires": [
             [
@@ -1610,7 +1610,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2750,
+        "x": 2620,
         "y": 1060,
         "wires": [
             [
