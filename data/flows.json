@@ -220,7 +220,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1240,
+        "x": 1500,
         "y": 700,
         "wires": [
             [
@@ -281,7 +281,7 @@
         "y": 700,
         "wires": [
             [
-                "c4db83d867cd1492"
+                "0cec540c56ea23b3"
             ]
         ]
     },
@@ -488,8 +488,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 3520,
-        "y": 700,
+        "x": 3540,
+        "y": 780,
         "wires": []
     },
     {
@@ -1474,8 +1474,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2850,
-        "y": 760,
+        "x": 2830,
+        "y": 860,
         "wires": [
             [
                 "62c28667af053fe0"
@@ -1501,7 +1501,7 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "{\"type\": 5, \"person_id\": \"health1\", \"person_role\": \"health\", \"room_id\": null} ",
+        "payload": "{\"type\": 5, \"person_id\": \"hp10\", \"person_role\": \"health\", \"room_id\": \"room10\"} ",
         "payloadType": "str",
         "x": 110,
         "y": 460,
@@ -1566,7 +1566,7 @@
         "y": 880,
         "wires": [
             [
-                "208b6e44f1f2d442"
+                "091e1425012342f8"
             ],
             [
                 "d119d9c78f4ac103"
@@ -1801,11 +1801,124 @@
         "type": "subflow:70865c1f352e8a0c",
         "z": "09012e75c72a4968",
         "name": "",
-        "x": 3270,
-        "y": 700,
+        "x": 3370,
+        "y": 780,
         "wires": [
             [
                 "3e879afc64077b51"
+            ]
+        ]
+    },
+    {
+        "id": "0cec540c56ea23b3",
+        "type": "file in",
+        "z": "09012e75c72a4968",
+        "name": "readActuatorRoomMappingFile",
+        "filename": "/data/configFiles/actuator_room_mapping.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "utf8",
+        "allProps": false,
+        "x": 1230,
+        "y": 700,
+        "wires": [
+            [
+                "c4db83d867cd1492"
+            ]
+        ]
+    },
+    {
+        "id": "3f215909208d5fb3",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "deleteHealtProfessionalRelationWIthRoom",
+        "func": "let room_id = msg.payload[\"value\"][0][\"$targetId\"]\nlet relID = room_id + \"-\" + msg.person_id\nmsg.url = \"https://digital-twin-layer.api.neu.digitaltwins.azure.net/digitaltwins/\" + msg.person_id + \"/relationships/\" + relID + \"?api-version=2023-02-27-preview\"\nmsg.method = \"delete\"\n\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2250,
+        "y": 860,
+        "wires": [
+            [
+                "c19c574b2b54b343"
+            ]
+        ]
+    },
+    {
+        "id": "091e1425012342f8",
+        "type": "function",
+        "z": "09012e75c72a4968",
+        "name": "getCurrentRoom",
+        "func": "let relName = \"rel_is_inside\"\nmsg.url = \"https://digital-twin-layer.api.neu.digitaltwins.azure.net/digitaltwins/\" + msg.person_id + \"/relationships/?relationshipName=\" + relName + \"&api-version=2023-02-27-preview\"\nmsg.method = \"get\"\n\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1530,
+        "y": 820,
+        "wires": [
+            [
+                "f601941828d90ad1"
+            ]
+        ]
+    },
+    {
+        "id": "f601941828d90ad1",
+        "type": "subflow:70865c1f352e8a0c",
+        "z": "09012e75c72a4968",
+        "name": "",
+        "x": 1730,
+        "y": 820,
+        "wires": [
+            [
+                "7abff071a8097e2f"
+            ]
+        ]
+    },
+    {
+        "id": "c19c574b2b54b343",
+        "type": "subflow:70865c1f352e8a0c",
+        "z": "09012e75c72a4968",
+        "name": "",
+        "x": 2550,
+        "y": 820,
+        "wires": [
+            [
+                "208b6e44f1f2d442"
+            ]
+        ]
+    },
+    {
+        "id": "7abff071a8097e2f",
+        "type": "switch",
+        "z": "09012e75c72a4968",
+        "name": "CurrentRoomExistsSwitch",
+        "property": "currentRoom",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "null"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1950,
+        "y": 820,
+        "wires": [
+            [
+                "208b6e44f1f2d442"
+            ],
+            [
+                "3f215909208d5fb3"
             ]
         ]
     }
