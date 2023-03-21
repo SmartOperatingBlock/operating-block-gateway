@@ -1,3 +1,42 @@
+## [1.1.0](https://github.com/SmartOperatingBlock/operating-block-gateway/compare/1.0.0...1.1.0) (2023-03-21)
+
+
+### Features
+
+* add commands to manage people tracking on azure plaftform ([d4ccdb7](https://github.com/SmartOperatingBlock/operating-block-gateway/commit/d4ccdb7f2eaa2571fcaca7494fc1d8e3e984157d))
+* add commands to set patient on operating table in azure platform ([6921265](https://github.com/SmartOperatingBlock/operating-block-gateway/commit/6921265f3dac670dfd3f2372e943e7dd320d37c6))
+* add commands to update actuator digital twin on azure plaftorm ([7ca46c5](https://github.com/SmartOperatingBlock/operating-block-gateway/commit/7ca46c5e618bed8b44fc901e0fb737e8a64edcc0))
+* add commands to update medical device digital twin on azure plaftorm ([c25e97c](https://github.com/SmartOperatingBlock/operating-block-gateway/commit/c25e97c119a999d6fbf931a95663b78222da190c))
+* add commands to update room digital twin on azure plaftorm ([64d7389](https://github.com/SmartOperatingBlock/operating-block-gateway/commit/64d7389f1b88d781076b175d4498a6aa038425b5))
+
+
+### Dependency updates
+
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.17 ([16b8be3](https://github.com/SmartOperatingBlock/operating-block-gateway/commit/16b8be37cdaef26b4089f0c8632613f23588ad7c))
+* **deps:** update node.js to 18.15 ([fd9bb17](https://github.com/SmartOperatingBlock/operating-block-gateway/commit/fd9bb17fd99254bcc3a7e9a0f8db44e0005cab96))
+
+
+### Refactoring
+
+* create subflow to make http request on azure ([ffc7c54](https://github.com/SmartOperatingBlock/operating-block-gateway/commit/ffc7c547c9410d15d1a4932cd6148f61fe178079))
+
+
+### General maintenance
+
+* add cast to int if state is a number ([c109f57](https://github.com/SmartOperatingBlock/operating-block-gateway/commit/c109f5737ce564bf7bb168151218f8e31e02fa90))
+* add command to clean configFiles ([f0cbdec](https://github.com/SmartOperatingBlock/operating-block-gateway/commit/f0cbdec397c36773784c98dc0d7b033102f5c7b1))
+* add deletion of rel between room and health professional when he changes room ([869dd79](https://github.com/SmartOperatingBlock/operating-block-gateway/commit/869dd79be245ffe7403b78f354c86c2589ace505))
+* add serial port and https dependencies ([6b62efb](https://github.com/SmartOperatingBlock/operating-block-gateway/commit/6b62efb09ccacfe5b1b97887b05570086ad5cb18))
+* change name to the serial on switch node ([b631dce](https://github.com/SmartOperatingBlock/operating-block-gateway/commit/b631dce46517436e2a3b5c9a29d14d58f0d5fcc0))
+* change relation name between process and medical device digital twins ([55221fb](https://github.com/SmartOperatingBlock/operating-block-gateway/commit/55221fb71b41e3ff70e289323bc45ecbe3dfc128))
+* delete creation of patientDT ([f86ca2d](https://github.com/SmartOperatingBlock/operating-block-gateway/commit/f86ca2d02eeb76ab40ff3eecddd56f903e19e45c))
+* delete unused inject nodes ([9483cf0](https://github.com/SmartOperatingBlock/operating-block-gateway/commit/9483cf0918cf8a74c36d6da77a99f364043e2990))
+* delete useless read from file ([dbaf7b0](https://github.com/SmartOperatingBlock/operating-block-gateway/commit/dbaf7b0488f3f520781a47b2d5abfc03474ceb82))
+* deletedockerfile ([f9c03f7](https://github.com/SmartOperatingBlock/operating-block-gateway/commit/f9c03f702ef0f15cf702dbfc817f07f2b62ee483))
+* disable project_enabled flag ([642d635](https://github.com/SmartOperatingBlock/operating-block-gateway/commit/642d635abfa161ef8acfdaf8e2926a437951b131))
+* edit commands to run the docker container ([a5db6cf](https://github.com/SmartOperatingBlock/operating-block-gateway/commit/a5db6cffa4da02a071cc504f11f017343bd2510d))
+* rename some functions name ([0596e16](https://github.com/SmartOperatingBlock/operating-block-gateway/commit/0596e16ce68a8ec45dd8cd44d63db5d01de0c116))
+
 ## 1.0.0 (2023-02-07)
 
 
