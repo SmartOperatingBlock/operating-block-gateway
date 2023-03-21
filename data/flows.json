@@ -1474,8 +1474,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2830,
-        "y": 860,
+        "x": 2870,
+        "y": 820,
         "wires": [
             [
                 "62c28667af053fe0"
@@ -1501,7 +1501,7 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "{\"type\": 5, \"person_id\": \"hp10\", \"person_role\": \"health\", \"room_id\": \"room10\"} ",
+        "payload": "{\"type\": 5, \"person_id\": \"ProvaPatient\", \"person_role\": \"patient\", \"room_id\": \"Room-2\"} ",
         "payloadType": "str",
         "x": 110,
         "y": 460,
@@ -1541,110 +1541,6 @@
         ]
     },
     {
-        "id": "d7aeec33f6a4d5e0",
-        "type": "switch",
-        "z": "09012e75c72a4968",
-        "name": "roleSwitch",
-        "property": "role",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "health",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "patient",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 2,
-        "x": 1310,
-        "y": 880,
-        "wires": [
-            [
-                "091e1425012342f8"
-            ],
-            [
-                "d119d9c78f4ac103"
-            ]
-        ]
-    },
-    {
-        "id": "c0697d7b4441af53",
-        "type": "function",
-        "z": "09012e75c72a4968",
-        "name": "createPatientDT",
-        "func": "let patientModel = \"dtmi:io:github:smartoperatingblock:Patient;1\"\nmsg.url = \"https://digital-twin-layer.api.neu.digitaltwins.azure.net/digitaltwins/\" + msg.person_id + \"?api-version=2023-02-27-preview\"\nmsg.method = \"put\"\n\nmsg.payload = {\n    \"$metadata\": {\n        \"$model\": patientModel\n    },\n    \"is_on_operating_table\": false\n}\n\nreturn msg\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 2280,
-        "y": 940,
-        "wires": [
-            [
-                "6e28ea76ba198ea8"
-            ]
-        ]
-    },
-    {
-        "id": "d119d9c78f4ac103",
-        "type": "function",
-        "z": "09012e75c72a4968",
-        "name": "checkIfPatientDTExitsts",
-        "func": "msg.url = \"https://digital-twin-layer.api.neu.digitaltwins.azure.net/digitaltwins/\" + msg.person_id + \"?api-version=2023-02-27-preview\"\nmsg.method = \"get\"\n\nreturn msg",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1550,
-        "y": 920,
-        "wires": [
-            [
-                "c24fc68b0de6902c"
-            ]
-        ]
-    },
-    {
-        "id": "7fce2ecffbba5be0",
-        "type": "switch",
-        "z": "09012e75c72a4968",
-        "name": "StatusCodeSwitch",
-        "property": "statusCode",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "200",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "404",
-                "vt": "num"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 2,
-        "x": 2070,
-        "y": 920,
-        "wires": [
-            [
-                "208b6e44f1f2d442"
-            ],
-            [
-                "c0697d7b4441af53"
-            ]
-        ]
-    },
-    {
         "id": "7810c6d0751cfd37",
         "type": "switch",
         "z": "09012e75c72a4968",
@@ -1669,7 +1565,7 @@
                 "b7d27c682271db4a"
             ],
             [
-                "d7aeec33f6a4d5e0"
+                "091e1425012342f8"
             ]
         ]
     },
@@ -1702,32 +1598,6 @@
         "wires": [
             [
                 "4702432e7293a098"
-            ]
-        ]
-    },
-    {
-        "id": "c24fc68b0de6902c",
-        "type": "subflow:70865c1f352e8a0c",
-        "z": "09012e75c72a4968",
-        "name": "",
-        "x": 1810,
-        "y": 920,
-        "wires": [
-            [
-                "7fce2ecffbba5be0"
-            ]
-        ]
-    },
-    {
-        "id": "6e28ea76ba198ea8",
-        "type": "subflow:70865c1f352e8a0c",
-        "z": "09012e75c72a4968",
-        "name": "",
-        "x": 2510,
-        "y": 940,
-        "wires": [
-            [
-                "208b6e44f1f2d442"
             ]
         ]
     },
@@ -1841,7 +1711,7 @@
         "finalize": "",
         "libs": [],
         "x": 2250,
-        "y": 860,
+        "y": 940,
         "wires": [
             [
                 "c19c574b2b54b343"
@@ -1859,8 +1729,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1530,
-        "y": 820,
+        "x": 1330,
+        "y": 880,
         "wires": [
             [
                 "f601941828d90ad1"
@@ -1872,8 +1742,8 @@
         "type": "subflow:70865c1f352e8a0c",
         "z": "09012e75c72a4968",
         "name": "",
-        "x": 1730,
-        "y": 820,
+        "x": 1530,
+        "y": 880,
         "wires": [
             [
                 "7abff071a8097e2f"
@@ -1886,7 +1756,7 @@
         "z": "09012e75c72a4968",
         "name": "",
         "x": 2550,
-        "y": 820,
+        "y": 860,
         "wires": [
             [
                 "208b6e44f1f2d442"
@@ -1898,8 +1768,8 @@
         "type": "switch",
         "z": "09012e75c72a4968",
         "name": "CurrentRoomExistsSwitch",
-        "property": "currentRoom",
-        "propertyType": "msg",
+        "property": "msg.payload[\"value\"][0][\"$targetId\"]",
+        "propertyType": "jsonata",
         "rules": [
             {
                 "t": "null"
@@ -1911,8 +1781,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 1950,
-        "y": 820,
+        "x": 1830,
+        "y": 880,
         "wires": [
             [
                 "208b6e44f1f2d442"
