@@ -1,3 +1,29 @@
+## [1.1.1](https://github.com/SmartOperatingBlock/operating-block-gateway/compare/1.1.0...1.1.1) (2023-05-29)
+
+
+### Bug Fixes
+
+* correct flow concurrency in reading and writing of files ([0156670](https://github.com/SmartOperatingBlock/operating-block-gateway/commit/015667021dcdf718af769e8bfb2fe3e0c4867c3b))
+
+
+### Dependency updates
+
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.19 ([c5fa4a0](https://github.com/SmartOperatingBlock/operating-block-gateway/commit/c5fa4a0fd34418e6d8df8346987463f496387554))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.20 ([bded9cb](https://github.com/SmartOperatingBlock/operating-block-gateway/commit/bded9cbb4d177a6cb3d39e4db35d9b3f264c0902))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.21 ([6d0b3ac](https://github.com/SmartOperatingBlock/operating-block-gateway/commit/6d0b3acc999313d0222bf4e29ec9cd21267ed918))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.22 ([532d908](https://github.com/SmartOperatingBlock/operating-block-gateway/commit/532d908cc54743e407238f8a543f7f110fa775d4))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.23 ([9e4d189](https://github.com/SmartOperatingBlock/operating-block-gateway/commit/9e4d1894a9c899f86a6f26806da50273d41d708c))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.24 ([4294995](https://github.com/SmartOperatingBlock/operating-block-gateway/commit/4294995be0a357c28b146acce9e937ae1d83ed17))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.25 ([7148e4f](https://github.com/SmartOperatingBlock/operating-block-gateway/commit/7148e4f0898afc4a781f5cdedcc50e4f7bc43f3d))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.26 ([d99643d](https://github.com/SmartOperatingBlock/operating-block-gateway/commit/d99643dcd6ba306bce73634f166b4cb94964b68f))
+* **deps:** update node.js to 18.16 ([4bf676c](https://github.com/SmartOperatingBlock/operating-block-gateway/commit/4bf676c1c620cb771b54e7ca988c4f32b6fdeb32))
+
+
+### General maintenance
+
+* add utility files ([dd98bc1](https://github.com/SmartOperatingBlock/operating-block-gateway/commit/dd98bc1b514f34b74cce4b772c3736731e45083d))
+* update README with new dependencies ([29f0bbe](https://github.com/SmartOperatingBlock/operating-block-gateway/commit/29f0bbe28090439097aa27c420fa88b695c7671e))
+
 ## [1.1.0](https://github.com/SmartOperatingBlock/operating-block-gateway/compare/1.0.0...1.1.0) (2023-03-21)
 
 
