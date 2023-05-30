@@ -1,3 +1,10 @@
+## [1.2.0](https://github.com/SmartOperatingBlock/operating-block-gateway/compare/1.1.3...1.2.0) (2023-05-30)
+
+
+### Features
+
+* add switch to choose arduino serial ([cd92858](https://github.com/SmartOperatingBlock/operating-block-gateway/commit/cd928589d87801645fb00968950f6d932a715aca))
+
 ## [1.1.3](https://github.com/SmartOperatingBlock/operating-block-gateway/compare/1.1.2...1.1.3) (2023-05-30)
 
 
