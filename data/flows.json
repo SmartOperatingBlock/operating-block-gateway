@@ -1991,7 +1991,7 @@
         "type": "http response",
         "z": "09012e75c72a4968",
         "name": "OK",
-        "statusCode": "200",
+        "statusCode": "204",
         "headers": {},
         "x": 2670,
         "y": 1500,
