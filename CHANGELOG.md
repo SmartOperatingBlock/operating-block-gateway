@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/SmartOperatingBlock/operating-block-gateway/compare/1.1.1...1.1.2) (2023-05-30)
+
+
+### Bug Fixes
+
+* add string terminator on serial message ([e5b32a7](https://github.com/SmartOperatingBlock/operating-block-gateway/commit/e5b32a7546a93c005fe6f94ba2c7e1cf0bad02e8))
+
 ## [1.1.1](https://github.com/SmartOperatingBlock/operating-block-gateway/compare/1.1.0...1.1.1) (2023-05-29)
 
 
