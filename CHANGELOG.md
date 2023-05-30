@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/SmartOperatingBlock/operating-block-gateway/compare/1.1.2...1.1.3) (2023-05-30)
+
+
+### Bug Fixes
+
+* change http response status ([4e62d40](https://github.com/SmartOperatingBlock/operating-block-gateway/commit/4e62d40521b6dc0914e33f5650495bc6285ac90c))
+
 ## [1.1.2](https://github.com/SmartOperatingBlock/operating-block-gateway/compare/1.1.1...1.1.2) (2023-05-30)
 
 
