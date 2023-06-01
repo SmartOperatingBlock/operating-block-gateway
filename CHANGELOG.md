@@ -1,3 +1,16 @@
+## [1.2.1](https://github.com/SmartOperatingBlock/operating-block-gateway/compare/1.2.0...1.2.1) (2023-06-01)
+
+
+### Bug Fixes
+
+* handle empty json from serial ([5610e3f](https://github.com/SmartOperatingBlock/operating-block-gateway/commit/5610e3fdf0fa2649dbf4ecdad90ed13ea373e421))
+
+
+### Dependency updates
+
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.27 ([044ae80](https://github.com/SmartOperatingBlock/operating-block-gateway/commit/044ae80cc63a3adcddab09bac72db44be4fd7222))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.30 ([8a3d483](https://github.com/SmartOperatingBlock/operating-block-gateway/commit/8a3d4831403d570f957b6223dbebd11ef251409e))
+
 ## [1.2.0](https://github.com/SmartOperatingBlock/operating-block-gateway/compare/1.1.3...1.2.0) (2023-05-30)
 
 
