@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/SmartOperatingBlock/operating-block-gateway/compare/1.2.1...1.2.2) (2023-06-01)
+
+
+### Bug Fixes
+
+* add check on model ([18c90b5](https://github.com/SmartOperatingBlock/operating-block-gateway/commit/18c90b586a75075d5849b833e548b2adb2b4e838))
+
 ## [1.2.1](https://github.com/SmartOperatingBlock/operating-block-gateway/compare/1.2.0...1.2.1) (2023-06-01)
 
 
