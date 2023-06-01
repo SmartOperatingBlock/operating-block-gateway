@@ -893,7 +893,7 @@
         "type": "function",
         "z": "09012e75c72a4968",
         "name": "setSerial",
-        "func": "msg.serial_id = \"/dev/ttyUSB0\"\nmsg.payload = JSON.parse(msg.payload)\nreturn msg;",
+        "func": "msg.serial_id = \"/dev/ttyUSB0\"\nmsg.payload = parseJson(msg.payload)\n\nfunction parseJson(string) {\n    return string === \"\" ? JSON.parse(\"{}\") : JSON.parse(string)\n}\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1033,7 +1033,8 @@
         "y": 180,
         "wires": [
             [
-                "ead8458e27835fd5"
+                "ead8458e27835fd5",
+                "df4e2787b740a95d"
             ]
         ]
     },
@@ -1936,8 +1937,8 @@
         "y": 1440,
         "wires": [
             [
-                "ad7cbc939ce76248",
-                "d84f8fb891cfb581"
+                "d84f8fb891cfb581",
+                "ad7cbc939ce76248"
             ]
         ]
     },
@@ -1994,8 +1995,24 @@
         "name": "Success: No content",
         "statusCode": "204",
         "headers": {},
-        "x": 2720,
+        "x": 2780,
         "y": 1500,
+        "wires": []
+    },
+    {
+        "id": "df4e2787b740a95d",
+        "type": "debug",
+        "z": "09012e75c72a4968",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 360,
+        "y": 140,
         "wires": []
     }
 ]
